@@ -3,27 +3,28 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class InputMgr : MonoBehaviour
+[CreateAssetMenu(fileName = "New Input", menuName = "InputMgr")]
+public class InputMgr : ScriptableObject
 {
     // Start is called before the first frame update
-    public Vector2 dir { get; private set; }
+    public Vector2 MoveDir { get; private set; }
+    public Vector2 GravityDir { get; private set; }
+
     bool holding_trigger = false;
     public PlayerInput playerInput;
 
     public void Move(InputAction.CallbackContext context)
     {
-        dir = context.ReadValue<Vector2>();
-
-        Debug.Log($"X direction = {dir.x}");
+        MoveDir = context.ReadValue<Vector2>();
     }
 
     public void ChangeGravityDirection(InputAction.CallbackContext context)
     {
-        dir = context.ReadValue<Vector2>();
+        GravityDir = context.ReadValue<Vector2>();
 
         if (context.performed)
         {
-            Debug.Log($"X direction = {dir.x} : Y direction = {dir.y}");
+            //tells the MovementHandler to change the direction of gravity
         }
     }
 
@@ -58,7 +59,7 @@ public class InputMgr : MonoBehaviour
     {
         if (context.performed && !holding_trigger)
         {
-            Debug.Log("Jump");
+            //call another event that tells the animator to send trigger and the MovementHandler to actually jump 
         }
     }
 

@@ -10,11 +10,6 @@ public class InputMgr : MonoBehaviour
     bool holding_trigger = false;
     public PlayerInput playerInput;
 
-    private void Update()
-    {
-        
-    }
-
     public void Move(InputAction.CallbackContext context)
     {
         dir = context.ReadValue<Vector2>();
@@ -22,35 +17,13 @@ public class InputMgr : MonoBehaviour
         Debug.Log($"X direction = {dir.x}");
     }
 
-    public void ChangeGravityUP(InputAction.CallbackContext context)
+    public void ChangeGravityDirection(InputAction.CallbackContext context)
     {
-        if (context.performed)
-        {
-            Debug.Log("UP");
-        }
-    }
+        dir = context.ReadValue<Vector2>();
 
-    public void ChangeGravityDOWN(InputAction.CallbackContext context)
-    {
         if (context.performed)
         {
-            Debug.Log("DOWN");
-        }
-    }
-
-    public void ChangeGravityLEFT(InputAction.CallbackContext context)
-    {
-        if (context.performed)
-        {
-            Debug.Log("LEFT");
-        }
-    }
-
-    public void ChangeGravityRIGHT(InputAction.CallbackContext context)
-    {
-        if (context.performed)
-        {
-            Debug.Log("RIGHT");
+            Debug.Log($"X direction = {dir.x} : Y direction = {dir.y}");
         }
     }
 
@@ -80,7 +53,6 @@ public class InputMgr : MonoBehaviour
         playerInput.actions.FindActionMap("ChangeGravity").Enable();
 
     }
-
 
     public void Jump(InputAction.CallbackContext context)
     {

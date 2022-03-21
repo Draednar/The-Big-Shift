@@ -33,40 +33,13 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "GravityUP_Key",
-                    "type": "Button",
-                    "id": "5b42cc76-af57-4b26-a1cc-482c38784303",
-                    "expectedControlType": "Button",
+                    "name": "GravityDirection",
+                    "type": "Value",
+                    "id": "ce5aeadd-8340-480d-80f7-6cb9f2fab4d5",
+                    "expectedControlType": "Vector2",
                     "processors": "",
                     "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "GravityDOWN_Key",
-                    "type": "Button",
-                    "id": "b5912a90-4a6d-4f4f-ab66-77d40b3c30e2",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "GravityLEFT_Key",
-                    "type": "Button",
-                    "id": "378e9359-ec9d-41ac-a7bf-b5022e0da14e",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "GravityRIGHT_Key",
-                    "type": "Button",
-                    "id": "2ab41b7d-4f77-42fd-92bb-c8bd8fb47700",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
+                    "initialStateCheck": true
                 }
             ],
             "bindings": [
@@ -160,50 +133,6 @@
                 },
                 {
                     "name": "",
-                    "id": "cfa86d6a-0c3c-4eb4-abc4-9957465f4c63",
-                    "path": "<Keyboard>/upArrow",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "GravityUP_Key",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "b92d05f7-28f0-49b8-ac82-9ba94767a8c5",
-                    "path": "<Keyboard>/downArrow",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "GravityDOWN_Key",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "7eeda664-f1b1-4711-921a-3466d5a16eb6",
-                    "path": "<Keyboard>/leftArrow",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "GravityLEFT_Key",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "aaeb27a5-a381-4d06-86a8-2a2f392ee34d",
-                    "path": "<Keyboard>/rightArrow",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "GravityRIGHT_Key",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "bb09b3e1-689c-41ce-845f-038c8b2479ea",
                     "path": "<Gamepad>/leftTrigger",
                     "interactions": "",
@@ -212,6 +141,61 @@
                     "action": "L2Modifier",
                     "isComposite": false,
                     "isPartOfComposite": false
+                },
+                {
+                    "name": "2D Vector",
+                    "id": "21c3afd6-2cfb-40e9-b509-21b58356b248",
+                    "path": "2DVector",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "GravityDirection",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "up",
+                    "id": "3a44a40e-4211-4ea1-96f0-597757721550",
+                    "path": "<Keyboard>/upArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "GravityDirection",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "down",
+                    "id": "821af829-9217-4ac6-ae1c-d2938ef9c551",
+                    "path": "<Keyboard>/downArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "GravityDirection",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "left",
+                    "id": "0e857e4b-bade-4f80-a887-bddea3fdae87",
+                    "path": "<Keyboard>/leftArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "GravityDirection",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "right",
+                    "id": "144b5c3c-1041-487e-8e1c-6e597b635a3b",
+                    "path": "<Keyboard>/rightArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "GravityDirection",
+                    "isComposite": false,
+                    "isPartOfComposite": true
                 }
             ]
         },
@@ -220,86 +204,70 @@
             "id": "0dcb1dc3-3850-4adb-a479-6b7db3d06cb9",
             "actions": [
                 {
-                    "name": "GravityUP_Button",
-                    "type": "Button",
-                    "id": "603c0995-91b8-45d6-a583-210a5e8b938e",
-                    "expectedControlType": "Button",
+                    "name": "GravityDirection",
+                    "type": "Value",
+                    "id": "fcae2bab-b7b5-4c08-822e-ce0c7c8d9d5a",
+                    "expectedControlType": "Vector2",
                     "processors": "",
                     "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "GravityDOWN_Button",
-                    "type": "Button",
-                    "id": "f986bf5d-d042-4758-aace-52a7d98b80f1",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "GravityLEFT_Button",
-                    "type": "Button",
-                    "id": "7a9dd5e5-be59-485e-8151-396fa62c428c",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "GravityRIGHT_Button",
-                    "type": "Button",
-                    "id": "6fe96e29-7fe1-4ea3-8761-9b0b350ce092",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
+                    "initialStateCheck": true
                 }
             ],
             "bindings": [
                 {
-                    "name": "",
-                    "id": "abbc6863-5871-4146-80e2-d70bcd48dd17",
+                    "name": "2D Vector",
+                    "id": "9f9300fa-37e8-4b2c-a9e9-22b2b99bea03",
+                    "path": "2DVector",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "GravityDirection",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "up",
+                    "id": "a26a1f67-53e3-42eb-bdd9-76275c9bf8f7",
                     "path": "<Gamepad>/buttonNorth",
                     "interactions": "",
                     "processors": "",
-                    "groups": "Gamepad",
-                    "action": "GravityUP_Button",
+                    "groups": "",
+                    "action": "GravityDirection",
                     "isComposite": false,
-                    "isPartOfComposite": false
+                    "isPartOfComposite": true
                 },
                 {
-                    "name": "",
-                    "id": "d98987c9-0f2d-4974-b075-3da21d04c3ca",
+                    "name": "down",
+                    "id": "b954e90f-dd31-4f59-8a19-b26431fd285d",
                     "path": "<Gamepad>/buttonSouth",
                     "interactions": "",
                     "processors": "",
-                    "groups": "Gamepad",
-                    "action": "GravityDOWN_Button",
+                    "groups": "",
+                    "action": "GravityDirection",
                     "isComposite": false,
-                    "isPartOfComposite": false
+                    "isPartOfComposite": true
                 },
                 {
-                    "name": "",
-                    "id": "f0f73690-f340-4441-8102-7099946975d1",
+                    "name": "left",
+                    "id": "9388564e-e7df-4fa9-97a3-32f0f541ddb8",
                     "path": "<Gamepad>/buttonWest",
                     "interactions": "",
                     "processors": "",
-                    "groups": "Gamepad",
-                    "action": "GravityLEFT_Button",
+                    "groups": "",
+                    "action": "GravityDirection",
                     "isComposite": false,
-                    "isPartOfComposite": false
+                    "isPartOfComposite": true
                 },
                 {
-                    "name": "",
-                    "id": "c340ac1f-28b6-4ec3-b876-d0e939cbacc5",
+                    "name": "right",
+                    "id": "c78283a4-cc0c-493d-8007-53b29e52cc77",
                     "path": "<Gamepad>/buttonEast",
                     "interactions": "",
                     "processors": "",
-                    "groups": "Gamepad",
-                    "action": "GravityRIGHT_Button",
+                    "groups": "",
+                    "action": "GravityDirection",
                     "isComposite": false,
-                    "isPartOfComposite": false
+                    "isPartOfComposite": true
                 }
             ]
         },

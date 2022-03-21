@@ -7,10 +7,14 @@ using UnityEngine.InputSystem;
 public class InputMgr : ScriptableObject
 {
     // Start is called before the first frame update
+    public delegate void JumpDelegate();
+    public event JumpDelegate jumpEvent;
+
     public Vector2 MoveDir { get; private set; }
     public Vector2 GravityDir { get; private set; }
 
     bool holding_trigger = false;
+
     public PlayerInput playerInput;
 
     public void Move(InputAction.CallbackContext context)
@@ -60,6 +64,7 @@ public class InputMgr : ScriptableObject
         if (context.performed && !holding_trigger)
         {
             //call another event that tells the animator to send trigger and the MovementHandler to actually jump 
+            jumpEvent.Invoke();
         }
     }
 

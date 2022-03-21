@@ -3,12 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-[CreateAssetMenu(fileName = "New Input", menuName = "InputMgr")]
-public class InputMgr : ScriptableObject
+public class InputMgr : MonoBehaviour
 {
     // Start is called before the first frame update
     public delegate void JumpDelegate();
-    public event JumpDelegate jumpEvent;
+    public event JumpDelegate JumpEvent;
+
+    public delegate void GravityDirDelegate(Vector2 dir);
+    public event GravityDirDelegate GravityEvent;
 
     public Vector2 MoveDir { get; private set; }
     public Vector2 GravityDir { get; private set; }
@@ -29,6 +31,7 @@ public class InputMgr : ScriptableObject
         if (context.performed)
         {
             //tells the MovementHandler to change the direction of gravity
+            GravityEvent.Invoke(GravityDir);
         }
     }
 
@@ -64,7 +67,7 @@ public class InputMgr : ScriptableObject
         if (context.performed && !holding_trigger)
         {
             //call another event that tells the animator to send trigger and the MovementHandler to actually jump 
-            jumpEvent.Invoke();
+            JumpEvent.Invoke();
         }
     }
 

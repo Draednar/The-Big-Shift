@@ -11,20 +11,25 @@ public class Movement : MonoBehaviour
     bool canJump = true;
     public float gravityForce, jumpForce, speed;
 
+    Vector2 gravityDir;
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         ApplyGravity();
+        gravityDir = Vector2.down;
     }
 
     private void OnEnable()
     {
-        PlayerInput.jumpEvent += ApplyJump;
+        PlayerInput.JumpEvent += ApplyJump;
+        PlayerInput.GravityEvent += ChangeDirGravity;
     }
 
     private void OnDisable()
     {
-        PlayerInput.jumpEvent -= ApplyJump;
+        PlayerInput.JumpEvent -= ApplyJump;
+        PlayerInput.GravityEvent -= ChangeDirGravity;
     }
 
     // Update is called once per frame
@@ -38,25 +43,36 @@ public class Movement : MonoBehaviour
     {
         if (PlayerInput.MoveDir.normalized.magnitude > 0.01f)
         {
-            rb.position += new Vector2(PlayerInput.MoveDir.x, PlayerInput.MoveDir.y) * speed * Time.deltaTime;
+            if (gravityDir == Vector2.right)
+            {
+                rb.position += new Vector2(0, PlayerInput.MoveDir.x) * speed * Time.deltaTime;
+                return;
+            }
+
+            else if (gravityDir == -Vector2.right)
+            {
+                rb.position += new Vector2(0, -PlayerInput.MoveDir.x) * speed * Time.deltaTime;
+                return;
+            }
+
+            rb.position += new Vector2(PlayerInput.MoveDir.x, 0) * speed * Time.deltaTime;
         }
     }
 
     void ApplyJump()
     {
-        canJump = false;
-
-        rb.velocity = Vector2.up * jumpForce;
+        rb.velocity = transform.up * jumpForce;
     }
 
-    void IsGrounded()
+    void ChangeDirGravity(Vector2 dir)
     {
-        canJump = true;
+        gravityDir = dir;
+        transform.up = -gravityDir;
     }
 
     void ApplyGravity()
     {
-        rb.AddForce(Vector2.down * gravityForce);
+        rb.AddForce(gravityDir * gravityForce);
     }
 
 }

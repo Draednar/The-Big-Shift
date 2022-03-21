@@ -4167,6 +4167,7 @@ GameObject:
   - component: {fileID: 1221157782}
   - component: {fileID: 1221157781}
   - component: {fileID: 1221157780}
+  - component: {fileID: 1221157783}
   - component: {fileID: 1221157779}
   - component: {fileID: 1221157777}
   - component: {fileID: 1221157778}
@@ -4236,7 +4237,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7151d6d82c8d34249a7712b0a5fd0c1c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlayerInput: {fileID: 11400000, guid: ed29481455cde5f41af3cb89d9c072d5, type: 2}
+  PlayerInput: {fileID: 1221157783}
   gravityForce: 50
   jumpForce: 15
   speed: 10
@@ -4267,7 +4268,7 @@ MonoBehaviour:
   m_ActionEvents:
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 11400000, guid: ed29481455cde5f41af3cb89d9c072d5, type: 2}
+      - m_Target: {fileID: 1221157783}
         m_TargetAssemblyTypeName: InputMgr, Assembly-CSharp
         m_MethodName: Move
         m_Mode: 0
@@ -4283,7 +4284,7 @@ MonoBehaviour:
     m_ActionName: Player/Move[/DualSenseGamepadHID/leftStick/left,/DualSenseGamepadHID/leftStick/right,/Keyboard/a,/Keyboard/d]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 11400000, guid: ed29481455cde5f41af3cb89d9c072d5, type: 2}
+      - m_Target: {fileID: 1221157783}
         m_TargetAssemblyTypeName: InputMgr, Assembly-CSharp
         m_MethodName: Jump
         m_Mode: 0
@@ -4299,7 +4300,7 @@ MonoBehaviour:
     m_ActionName: Player/Jump[/DualSenseGamepadHID/buttonSouth,/Keyboard/space]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 11400000, guid: ed29481455cde5f41af3cb89d9c072d5, type: 2}
+      - m_Target: {fileID: 1221157783}
         m_TargetAssemblyTypeName: InputMgr, Assembly-CSharp
         m_MethodName: L2Modifier
         m_Mode: 0
@@ -4315,7 +4316,7 @@ MonoBehaviour:
     m_ActionName: Player/L2Modifier[/DualSenseGamepadHID/leftTrigger]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 11400000, guid: ed29481455cde5f41af3cb89d9c072d5, type: 2}
+      - m_Target: {fileID: 1221157783}
         m_TargetAssemblyTypeName: InputMgr, Assembly-CSharp
         m_MethodName: ChangeGravityDirection
         m_Mode: 0
@@ -4331,7 +4332,7 @@ MonoBehaviour:
     m_ActionName: Player/GravityDirection[/Keyboard/upArrow,/Keyboard/downArrow,/Keyboard/leftArrow,/Keyboard/rightArrow]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 11400000, guid: ed29481455cde5f41af3cb89d9c072d5, type: 2}
+      - m_Target: {fileID: 1221157783}
         m_TargetAssemblyTypeName: InputMgr, Assembly-CSharp
         m_MethodName: ChangeGravityDirection
         m_Mode: 0
@@ -4455,6 +4456,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1221157783
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1221157776}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c1288f8d85315534b990e728b7449d64, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerInput: {fileID: 1221157780}
 --- !u!1 &1583282916
 GameObject:
   m_ObjectHideFlags: 0

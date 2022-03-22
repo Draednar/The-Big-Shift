@@ -5,7 +5,7 @@ using UnityEngine;
 public class Movement : MonoBehaviour
 {
     // Start is called before the first frame update
-
+    [SerializeField] Transform origin;
     public InputMgr PlayerInput;
     Rigidbody2D rb;
     bool canJump = true;
@@ -43,6 +43,13 @@ public class Movement : MonoBehaviour
     {
         if (PlayerInput.MoveDir.normalized.magnitude > 0.01f)
         {
+            FlipSprite();
+
+            if (IsFacingWall())
+            {
+                return;
+            }
+
             if (gravityDir == Vector2.right)
             {
                 rb.position += new Vector2(0, PlayerInput.MoveDir.x) * speed * Time.deltaTime;
@@ -57,6 +64,81 @@ public class Movement : MonoBehaviour
 
             rb.position += new Vector2(PlayerInput.MoveDir.x, 0) * speed * Time.deltaTime;
         }
+    }
+
+    void FlipSprite()
+    {
+        switch (gravityDir)
+        {
+            case Vector2 v when v.Equals(Vector2.down):
+
+                if (PlayerInput.MoveDir.x == 1)
+                {
+                    rb.transform.rotation = Quaternion.Euler(0, 180, 0);
+                }
+
+                else
+                {
+                    rb.transform.rotation = Quaternion.Euler(0, 0, 0);
+                }
+
+                break;
+
+            case Vector2 v when v.Equals(Vector2.up):
+
+                if (PlayerInput.MoveDir.x == 1)
+                {
+                    rb.transform.rotation = Quaternion.Euler(-180, 180, 0);
+                }
+
+                else
+                {
+                    rb.transform.rotation = Quaternion.Euler(-180, 0, 0);
+                }
+
+                break;
+
+            case Vector2 v when v.Equals(Vector2.left):
+
+                if (PlayerInput.MoveDir.x == 1)
+                {
+                    rb.transform.rotation = Quaternion.Euler(-180, 0, -90);
+                }
+
+                else
+                {
+                    rb.transform.rotation = Quaternion.Euler(0, 0, -90);
+                }
+
+                break;
+
+            case Vector2 v when v.Equals(Vector2.right):
+
+                if (PlayerInput.MoveDir.x == 1)
+                {
+                    rb.transform.rotation = Quaternion.Euler(-180, 0, 90);
+                }
+
+                else
+                {
+                    rb.transform.rotation = Quaternion.Euler(0, 0, 90);
+                }
+
+                break;
+        }
+    }
+
+    bool IsFacingWall()
+    {
+        RaycastHit2D raycastHit = Physics2D.Raycast(origin.position, -transform.right, 0.2f);
+
+        if (raycastHit)
+        {
+            return true;
+        }
+
+        return false;
+
     }
 
     void ApplyJump()

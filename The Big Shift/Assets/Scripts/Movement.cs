@@ -18,26 +18,27 @@ public class Movement : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
-        ApplyGravity();
+        ApplyJumpInstant();
         gravityDir = Vector2.down;
     }
 
     private void OnEnable()
     {
-        PlayerInput.JumpEvent += ApplyJump;
+        PlayerInput.JumpEvent += ApplyJumpInstant;
         PlayerInput.GravityEvent += ChangeDirGravity;
     }
 
     private void OnDisable()
     {
-        PlayerInput.JumpEvent -= ApplyJump;
+        PlayerInput.JumpEvent -= ApplyJumpInstant;
         PlayerInput.GravityEvent -= ChangeDirGravity;
     }
 
     // Update is called once per frame
     private void FixedUpdate()
     {
-        ApplyGravity();
+        IsGrounded();
+        ApplyGravityForce();
         MovePlayer();
     }
 
@@ -138,7 +139,7 @@ public class Movement : MonoBehaviour
 
     bool IsFacingWall()
     {
-        RaycastHit2D raycastHit = Physics2D.Raycast(origin.position, -transform.right, 0.2f);
+        RaycastHit2D raycastHit = Physics2D.Raycast(origin.position, transform.right, 0.2f);
 
         if (raycastHit)
         {
@@ -149,10 +150,26 @@ public class Movement : MonoBehaviour
 
     }
 
-    void ApplyJump()
+    void ApplyJumpInstant()
     {
         rb.velocity = transform.up * jumpForce;
     }
+
+
+    void IsGrounded()
+    {
+        RaycastHit2D raycastHit = Physics2D.Raycast(origin.position, -transform.up, 0.8f);
+
+        if (raycastHit)
+        {
+            canJump = true;
+            return;
+        }
+
+        canJump = false;
+        return;
+    }
+
 
     void ChangeDirGravity(Vector2 dir)
     {
@@ -160,9 +177,17 @@ public class Movement : MonoBehaviour
         transform.up = -gravityDir;
     }
 
-    void ApplyGravity()
+    void ApplyGravityForce()
     {
-        rb.AddForce(gravityDir * gravityForce);
+        rb.AddForce(gravityDir * gravityForce, ForceMode2D.Impulse);
+    }
+
+    void ApplyGravityInstant()
+    {
+        if (!canJump)
+        {
+            rb.velocity = gravityDir * gravityForce;
+        }
     }
 
 }

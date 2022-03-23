@@ -388,7 +388,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   origin: {fileID: 1705230048}
-  ground: {fileID: 7600893163999902973}
+  groundCenter: {fileID: 7600893163999902973}
+  groundLeft: {fileID: 1795876840159719638}
+  groundRight: {fileID: 3579799652497953458}
   PlatformMask:
     serializedVersion: 2
     m_Bits: 8

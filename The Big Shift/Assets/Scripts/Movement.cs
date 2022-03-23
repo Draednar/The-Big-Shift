@@ -6,6 +6,7 @@ public class Movement : MonoBehaviour
 {
     // Start is called before the first frame update
     [SerializeField] Transform origin;
+    Animator animator;
     public InputMgr PlayerInput;
     Rigidbody2D rb;
     bool canJump = true;
@@ -16,6 +17,7 @@ public class Movement : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
         ApplyGravity();
         gravityDir = Vector2.down;
     }
@@ -50,6 +52,8 @@ public class Movement : MonoBehaviour
                 return;
             }
 
+            animator.SetBool("IsMoving", true);
+
             if (gravityDir == Vector2.right)
             {
                 rb.position += new Vector2(0, PlayerInput.MoveDir.x) * speed * Time.deltaTime;
@@ -63,7 +67,11 @@ public class Movement : MonoBehaviour
             }
 
             rb.position += new Vector2(PlayerInput.MoveDir.x, 0) * speed * Time.deltaTime;
+
+            return;
         }
+
+        animator.SetBool("IsMoving", false);
     }
 
     void FlipSprite()
@@ -74,12 +82,12 @@ public class Movement : MonoBehaviour
 
                 if (PlayerInput.MoveDir.x == 1)
                 {
-                    rb.transform.rotation = Quaternion.Euler(0, 180, 0);
+                    rb.transform.rotation = Quaternion.Euler(0, 0, 0);
                 }
 
                 else
                 {
-                    rb.transform.rotation = Quaternion.Euler(0, 0, 0);
+                    rb.transform.rotation = Quaternion.Euler(0, 180, 0);
                 }
 
                 break;
@@ -88,12 +96,12 @@ public class Movement : MonoBehaviour
 
                 if (PlayerInput.MoveDir.x == 1)
                 {
-                    rb.transform.rotation = Quaternion.Euler(-180, 180, 0);
+                    rb.transform.rotation = Quaternion.Euler(-180, 0, 0);
                 }
 
                 else
                 {
-                    rb.transform.rotation = Quaternion.Euler(-180, 0, 0);
+                    rb.transform.rotation = Quaternion.Euler(-180, 180, 0);
                 }
 
                 break;
@@ -102,12 +110,12 @@ public class Movement : MonoBehaviour
 
                 if (PlayerInput.MoveDir.x == 1)
                 {
-                    rb.transform.rotation = Quaternion.Euler(-180, 0, -90);
+                    rb.transform.rotation = Quaternion.Euler(0, 0, -90);
                 }
 
                 else
                 {
-                    rb.transform.rotation = Quaternion.Euler(0, 0, -90);
+                    rb.transform.rotation = Quaternion.Euler(-180, 0, -90);
                 }
 
                 break;
@@ -116,12 +124,12 @@ public class Movement : MonoBehaviour
 
                 if (PlayerInput.MoveDir.x == 1)
                 {
-                    rb.transform.rotation = Quaternion.Euler(-180, 0, 90);
+                    rb.transform.rotation = Quaternion.Euler(0, 0, 90);
                 }
 
                 else
                 {
-                    rb.transform.rotation = Quaternion.Euler(0, 0, 90);
+                    rb.transform.rotation = Quaternion.Euler(-180, 0, 90);
                 }
 
                 break;

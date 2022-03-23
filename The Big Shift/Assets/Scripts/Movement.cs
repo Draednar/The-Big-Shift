@@ -5,7 +5,8 @@ using UnityEngine;
 public class Movement : MonoBehaviour
 {
     // Start is called before the first frame update
-    [SerializeField] Transform origin;
+    [SerializeField] Transform origin, groundCenter, groundLeft, groundRight;
+    public LayerMask PlatformMask;
     Animator animator;
     public InputMgr PlayerInput;
     Rigidbody2D rb;
@@ -139,7 +140,7 @@ public class Movement : MonoBehaviour
 
     bool IsFacingWall()
     {
-        RaycastHit2D raycastHit = Physics2D.Raycast(origin.position, transform.right, 0.2f);
+        RaycastHit2D raycastHit = Physics2D.Raycast(origin.position, transform.right, 0.2f, PlatformMask);
 
         if (raycastHit)
         {
@@ -152,15 +153,22 @@ public class Movement : MonoBehaviour
 
     void ApplyJumpInstant()
     {
-        rb.velocity = transform.up * jumpForce;
+        if (canJump)
+        {
+            rb.velocity = transform.up * jumpForce;
+        }
     }
 
 
     void IsGrounded()
     {
-        RaycastHit2D raycastHit = Physics2D.Raycast(origin.position, -transform.up, 0.8f);
+        RaycastHit2D raycastHitCenter = Physics2D.Raycast(groundCenter.position, -transform.up, 0.4f, PlatformMask);
 
-        if (raycastHit)
+        RaycastHit2D raycastHitLeft = Physics2D.Raycast(groundLeft.position, -transform.up, 0.4f, PlatformMask);
+
+        RaycastHit2D raycastHitRight = Physics2D.Raycast(groundRight.position, -transform.up, 0.4f, PlatformMask);
+
+        if (raycastHitCenter || raycastHitLeft || raycastHitRight)
         {
             canJump = true;
             return;

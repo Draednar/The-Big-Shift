@@ -138,7 +138,7 @@ public class Movement : MonoBehaviour
 
     bool IsFacingWall()
     {
-        RaycastHit2D raycastHit = Physics2D.Raycast(origin.position, -transform.right, 0.2f);
+        RaycastHit2D raycastHit = Physics2D.Raycast(origin.position, transform.right, 0.2f);
 
         if (raycastHit)
         {

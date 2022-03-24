@@ -4,8 +4,11 @@ using UnityEngine;
 
 public class Movement : MonoBehaviour
 {
+    enum GravityDirection {UP, DOWN, LEFT, RIGHT}
+
     // Start is called before the first frame update
     [SerializeField] Transform origin, groundCenter, groundLeft, groundRight;
+    [SerializeField] GravityDirection gravity;
     public LayerMask PlatformMask;
     Animator animator;
     public InputMgr PlayerInput;
@@ -17,10 +20,9 @@ public class Movement : MonoBehaviour
 
     void Start()
     {
+        StartGravityDirection();
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
-        ApplyJumpInstant();
-        gravityDir = Vector2.down;
     }
 
     private void OnEnable()
@@ -45,6 +47,7 @@ public class Movement : MonoBehaviour
 
     void MovePlayer()
     {
+
         if (PlayerInput.MoveDir.normalized.magnitude > 0.01f)
         {
             FlipSprite();
@@ -159,7 +162,6 @@ public class Movement : MonoBehaviour
         }
     }
 
-
     void IsGrounded()
     {
         RaycastHit2D raycastHitCenter = Physics2D.Raycast(groundCenter.position, -transform.up, 0.4f, PlatformMask);
@@ -171,13 +173,36 @@ public class Movement : MonoBehaviour
         if (raycastHitCenter || raycastHitLeft || raycastHitRight)
         {
             canJump = true;
+            animator.SetBool("IsJumping", false);
             return;
         }
 
         canJump = false;
+        animator.SetBool("IsJumping", true);
         return;
     }
 
+    void StartGravityDirection()
+    {
+        switch (gravity)
+        {
+            case GravityDirection.UP:
+                gravityDir = Vector2.up;
+                break;
+            case GravityDirection.DOWN:
+                gravityDir = Vector2.down;
+                break;
+            case GravityDirection.LEFT:
+                gravityDir = Vector2.left;
+                break;
+            case GravityDirection.RIGHT:
+                gravityDir = Vector2.right;
+                break;
+        }
+
+        transform.up = -gravityDir;
+
+    }
 
     void ChangeDirGravity(Vector2 dir)
     {

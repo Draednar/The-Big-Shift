@@ -194,7 +194,7 @@ GameObject:
   - component: {fileID: 480565409}
   - component: {fileID: 480565408}
   - component: {fileID: 480565407}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Floor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -696,7 +696,7 @@ GameObject:
   - component: {fileID: 546662739}
   - component: {fileID: 546662738}
   - component: {fileID: 546662737}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Walls
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5384,7 +5384,7 @@ GameObject:
   - component: {fileID: 700534197}
   - component: {fileID: 700534201}
   - component: {fileID: 700534200}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Collidable
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5780,7 +5780,7 @@ GameObject:
   - component: {fileID: 993699178}
   - component: {fileID: 993699177}
   - component: {fileID: 993699176}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Traps
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6408,7 +6408,7 @@ GameObject:
   - component: {fileID: 993825088}
   - component: {fileID: 993825087}
   - component: {fileID: 993825086}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Chekpoints
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7646,7 +7646,7 @@ GameObject:
   - component: {fileID: 1066094187}
   - component: {fileID: 1066094186}
   - component: {fileID: 1066094185}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Bridges
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8037,7 +8037,7 @@ GameObject:
   - component: {fileID: 1076838439}
   - component: {fileID: 1076838441}
   - component: {fileID: 1076838440}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -38441,7 +38441,7 @@ GameObject:
   - component: {fileID: 1455245689}
   - component: {fileID: 1455245688}
   - component: {fileID: 1455245687}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Platforms
   m_TagString: Untagged
   m_Icon: {fileID: 0}

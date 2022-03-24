@@ -286,35 +286,11 @@ MonoBehaviour:
     m_ActionId: 202e45ab-9633-4b00-86af-216f67501775
     m_ActionName: Player/L2Modifier[/DualSenseGamepadHID/leftTrigger]
   - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 8590200987315055079}
-        m_TargetAssemblyTypeName: InputMgr, Assembly-CSharp
-        m_MethodName: ChangeGravityDirection
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
     m_ActionId: ce5aeadd-8340-480d-80f7-6cb9f2fab4d5
     m_ActionName: Player/GravityDirection[/Keyboard/upArrow,/Keyboard/downArrow,/Keyboard/leftArrow,/Keyboard/rightArrow]
   - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 8590200987315055079}
-        m_TargetAssemblyTypeName: InputMgr, Assembly-CSharp
-        m_MethodName: ChangeGravityDirection
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
     m_ActionId: fcae2bab-b7b5-4c08-822e-ce0c7c8d9d5a
     m_ActionName: ChangeGravity/GravityDirection[/DualSenseGamepadHID/buttonNorth,/DualSenseGamepadHID/buttonSouth,/DualSenseGamepadHID/buttonWest,/DualSenseGamepadHID/buttonEast]
   - m_PersistentCalls:
@@ -357,6 +333,134 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: 9caa3d8a-6b2f-4e8e-8bad-6ede561bd9be
     m_ActionName: UI/TrackedDeviceOrientation
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8590200987315055079}
+        m_TargetAssemblyTypeName: InputMgr, Assembly-CSharp
+        m_MethodName: ChangeGravityUP
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 7e56eb91-cb59-41ed-8af0-f9e4c13e7a74
+    m_ActionName: Player/GravityUP[/Keyboard/upArrow]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8590200987315055079}
+        m_TargetAssemblyTypeName: InputMgr, Assembly-CSharp
+        m_MethodName: ChangeGravityDOWN
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: ba6e61d3-f161-4739-8af4-e42b52cb0317
+    m_ActionName: Player/GravityDOWN[/Keyboard/downArrow]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8590200987315055079}
+        m_TargetAssemblyTypeName: InputMgr, Assembly-CSharp
+        m_MethodName: ChangeGravityLEFT
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 142317fb-4212-46d0-97cf-76c1a3705644
+    m_ActionName: Player/GravityLEFT[/Keyboard/leftArrow]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8590200987315055079}
+        m_TargetAssemblyTypeName: InputMgr, Assembly-CSharp
+        m_MethodName: ChangeGravityRIGHT
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 23cfda33-75cf-494c-ad74-18b96e07e76f
+    m_ActionName: Player/GravityRIGHT[/Keyboard/rightArrow]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8590200987315055079}
+        m_TargetAssemblyTypeName: InputMgr, Assembly-CSharp
+        m_MethodName: ChangeGravityUP
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: d91652a3-380b-43e1-a799-5b7c92ef512d
+    m_ActionName: ChangeGravity/GravityUP[/DualSenseGamepadHID/buttonNorth]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8590200987315055079}
+        m_TargetAssemblyTypeName: InputMgr, Assembly-CSharp
+        m_MethodName: ChangeGravityDOWN
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 89b0123e-4ce9-4929-99e0-99d4c3ca9f3d
+    m_ActionName: ChangeGravity/GravityDOWN[/DualSenseGamepadHID/buttonSouth]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8590200987315055079}
+        m_TargetAssemblyTypeName: InputMgr, Assembly-CSharp
+        m_MethodName: ChangeGravityLEFT
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 1642f296-0044-41d6-9e82-7c448b5c192c
+    m_ActionName: ChangeGravity/GravityLEFT[/DualSenseGamepadHID/buttonWest]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8590200987315055079}
+        m_TargetAssemblyTypeName: InputMgr, Assembly-CSharp
+        m_MethodName: ChangeGravityRIGHT
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 79126628-822f-4857-8fb8-64ae44d6984b
+    m_ActionName: ChangeGravity/GravityRIGHT[/DualSenseGamepadHID/buttonEast]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -398,6 +502,7 @@ MonoBehaviour:
   gravityForce: 4
   jumpForce: 48
   speed: 10
+  forceCurve: 2.2
 --- !u!50 &8590200987315055073
 Rigidbody2D:
   serializedVersion: 4

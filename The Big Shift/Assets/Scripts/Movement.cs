@@ -11,7 +11,7 @@ public class Movement : MonoBehaviour
     public InputMgr PlayerInput;
     Rigidbody2D rb;
     bool canJump = true;
-    public float gravityForce, jumpForce, speed;
+    public float gravityForce, jumpForce, speed, forceCurve;
 
     Vector2 gravityDir;
 
@@ -183,6 +183,7 @@ public class Movement : MonoBehaviour
     {
         gravityDir = dir;
         transform.up = -gravityDir;
+        rb.velocity = new Vector2(rb.velocity.x / forceCurve, rb.velocity.y / forceCurve);
     }
 
     void ApplyGravityForce()

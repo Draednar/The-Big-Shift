@@ -35,6 +35,42 @@ public class InputMgr : MonoBehaviour
         }
     }
 
+    public void ChangeGravityUP(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            //tells the MovementHandler to change the direction of gravity
+            GravityEvent.Invoke(Vector2.up);
+        }
+    }
+
+    public void ChangeGravityDOWN(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            //tells the MovementHandler to change the direction of gravity
+            GravityEvent.Invoke(Vector2.down);
+        }
+    }
+
+    public void ChangeGravityLEFT(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            //tells the MovementHandler to change the direction of gravity
+            GravityEvent.Invoke(Vector2.left);
+        }
+    }
+
+    public void ChangeGravityRIGHT(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            //tells the MovementHandler to change the direction of gravity
+            GravityEvent.Invoke(Vector2.right);
+        }
+    }
+
     public void L2Modifier(InputAction.CallbackContext context)
     {
         if (context.started)

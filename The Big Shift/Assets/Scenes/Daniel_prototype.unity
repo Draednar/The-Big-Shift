@@ -3652,6 +3652,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: TestPlayer
       objectReference: {fileID: 0}
+    - target: {fileID: 8590200987315055075, guid: b504317251883da499f30dcea47d965c, type: 3}
+      propertyPath: NchangeGravity
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8590200987315055078, guid: b504317251883da499f30dcea47d965c, type: 3}
       propertyPath: m_RootOrder
       value: 3

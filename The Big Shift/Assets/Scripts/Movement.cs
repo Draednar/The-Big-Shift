@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Movement : MonoBehaviour
 {
-    enum GravityDirection {UP, DOWN, LEFT, RIGHT}
+    enum GravityDirection { UP, DOWN, LEFT, RIGHT }
 
     // Start is called before the first frame update
     [SerializeField] Transform origin, groundCenter, groundLeft, groundRight;
@@ -14,8 +14,8 @@ public class Movement : MonoBehaviour
     public InputMgr PlayerInput;
     Rigidbody2D rb;
     bool canJump = true, wasOnGroundBefore = false, coroutineRunning = false;
-    public float gravityForce, jumpForce, speed, forceCurve, coyoteTime;
-    float jumpCounter = 0;
+    public float gravityForce, jumpForce, speed, forceCurve, coyoteTime, NchangeGravity;
+    float jumpCounter = 0, gravityCounter = 0;
 
     Vector2 gravityDir;
 
@@ -178,6 +178,7 @@ public class Movement : MonoBehaviour
             wasOnGroundBefore = true;
             animator.SetBool("IsJumping", false);
             jumpCounter = 0;
+            gravityCounter = 0;
             return;
         }
 
@@ -186,6 +187,7 @@ public class Movement : MonoBehaviour
             canJump = true;
             animator.SetBool("IsJumping", false);
             jumpCounter = 0;
+            gravityCounter = 0;
             return;
         }
 
@@ -204,7 +206,7 @@ public class Movement : MonoBehaviour
             return;
         }
 
-        
+
     }
 
     IEnumerator CoyoteTime()
@@ -239,9 +241,15 @@ public class Movement : MonoBehaviour
 
     void ChangeDirGravity(Vector2 dir)
     {
-        gravityDir = dir;
-        transform.up = -gravityDir;
-        rb.velocity = new Vector2(rb.velocity.x / forceCurve, rb.velocity.y / forceCurve);
+        gravityCounter++;
+
+        if (gravityCounter <= NchangeGravity)
+        {
+            gravityDir = dir;
+            transform.up = -gravityDir;
+            rb.velocity = new Vector2(rb.velocity.x / forceCurve, rb.velocity.y / forceCurve);
+        }
+
     }
 
     void ApplyGravityForce()

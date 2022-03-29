@@ -15,6 +15,7 @@ public class Movement : MonoBehaviour
     Rigidbody2D rb;
     bool canJump = true, wasOnGroundBefore = false, coroutineRunning = false;
     public float gravityForce, jumpForce, speed, forceCurve, coyoteTime;
+    float jumpCounter = 0;
 
     Vector2 gravityDir;
 
@@ -156,25 +157,27 @@ public class Movement : MonoBehaviour
 
     void ApplyJumpInstant()
     {
-        if (canJump)
+        if (canJump && jumpCounter <= 0)
         {
             rb.velocity = transform.up * jumpForce;
+            jumpCounter += 1;
         }
     }
 
     void IsGrounded()
     {
-        RaycastHit2D raycastHitCenter = Physics2D.Raycast(groundCenter.position, -transform.up, 0.4f, PlatformMask);
+        RaycastHit2D raycastHitCenter = Physics2D.Raycast(groundCenter.position, -transform.up, 1.2f, PlatformMask);
 
-        RaycastHit2D raycastHitLeft = Physics2D.Raycast(groundLeft.position, -transform.up, 0.4f, PlatformMask);
+        RaycastHit2D raycastHitLeft = Physics2D.Raycast(groundLeft.position, -transform.up, 1.2f, PlatformMask);
 
-        RaycastHit2D raycastHitRight = Physics2D.Raycast(groundRight.position, -transform.up, 0.4f, PlatformMask);
+        RaycastHit2D raycastHitRight = Physics2D.Raycast(groundRight.position, -transform.up, 1.2f, PlatformMask);
 
         if (raycastHitLeft)
         {
             canJump = true;
             wasOnGroundBefore = true;
             animator.SetBool("IsJumping", false);
+            jumpCounter = 0;
             return;
         }
 
@@ -182,6 +185,7 @@ public class Movement : MonoBehaviour
         {
             canJump = true;
             animator.SetBool("IsJumping", false);
+            jumpCounter = 0;
             return;
         }
 
@@ -196,6 +200,7 @@ public class Movement : MonoBehaviour
         else
         {
             animator.SetBool("IsJumping", true);
+            canJump = false;
             return;
         }
 

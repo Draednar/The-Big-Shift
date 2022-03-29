@@ -13,8 +13,8 @@ public class Movement : MonoBehaviour
     Animator animator;
     public InputMgr PlayerInput;
     Rigidbody2D rb;
-    bool canJump = true;
-    public float gravityForce, jumpForce, speed, forceCurve;
+    bool canJump = true, wasOnGroundBefore = false, coroutineRunning = false;
+    public float gravityForce, jumpForce, speed, forceCurve, coyoteTime;
 
     Vector2 gravityDir;
 
@@ -170,16 +170,44 @@ public class Movement : MonoBehaviour
 
         RaycastHit2D raycastHitRight = Physics2D.Raycast(groundRight.position, -transform.up, 0.4f, PlatformMask);
 
-        if (raycastHitCenter || raycastHitLeft || raycastHitRight)
+        if (raycastHitLeft)
+        {
+            canJump = true;
+            wasOnGroundBefore = true;
+            animator.SetBool("IsJumping", false);
+            return;
+        }
+
+        else if (raycastHitCenter || raycastHitRight)
         {
             canJump = true;
             animator.SetBool("IsJumping", false);
             return;
         }
 
+        if (wasOnGroundBefore && !coroutineRunning)
+        {
+            wasOnGroundBefore = false;
+            canJump = true;
+            StartCoroutine(CoyoteTime());
+            return;
+        }
+
+        else
+        {
+            animator.SetBool("IsJumping", true);
+            return;
+        }
+
+        
+    }
+
+    IEnumerator CoyoteTime()
+    {
+        coroutineRunning = true;
+        yield return new WaitForSeconds(coyoteTime);
         canJump = false;
-        animator.SetBool("IsJumping", true);
-        return;
+        coroutineRunning = false;
     }
 
     void StartGravityDirection()

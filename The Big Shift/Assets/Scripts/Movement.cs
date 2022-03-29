@@ -244,6 +244,11 @@ public class Movement : MonoBehaviour
         rb.AddForce(gravityDir * gravityForce, ForceMode2D.Impulse);
     }
 
+    public void SetCanJump(bool value)
+    {
+        canJump = value;
+    }
+
     void ApplyGravityInstant()
     {
         if (!canJump)

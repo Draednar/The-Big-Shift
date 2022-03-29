@@ -11,15 +11,22 @@ public class Enemy : MonoBehaviour
     [SerializeField] GravityDirection direction;
     [SerializeField] LayerMask PlatformMask;
 
-    public float speed, waitForMovement;
+    public float speed, waitForMovement, HitPoints;
     float movementDir = -1;
-    Rigidbody2D rb;
 
-    bool wasOnGround = false, startMoving = true;
+    Rigidbody2D rb;
+    BoxCollider2D boxCollider;
+    Animator animator;
+
+    bool wasOnGround = false;
+    public bool startMoving { get; set; }
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
+        boxCollider = GetComponent<BoxCollider2D>();
+        startMoving = true;
     }
 
     // Update is called once per frame
@@ -28,8 +35,15 @@ public class Enemy : MonoBehaviour
         Movement();
     }
 
+    void Animations()
+    {
+        animator.SetBool("IsMoving", startMoving);
+    }
+
     void Movement()
     {
+        Animations();
+
         if (!startMoving)
         {
             return;
@@ -58,7 +72,7 @@ public class Enemy : MonoBehaviour
     {
         RaycastHit2D raycastHitDown = Physics2D.Raycast(origin.position, -transform.up, 3f, PlatformMask);
 
-        RaycastHit2D raycastHitFront = Physics2D.Raycast(origin.position, -transform.forward, 1f, PlatformMask);
+        RaycastHit2D raycastHitFront = Physics2D.Raycast(origin.position, -transform.forward, 0.3f, PlatformMask);
 
         if (raycastHitFront)
         {
@@ -145,6 +159,16 @@ public class Enemy : MonoBehaviour
 
                 break;
         }
+    }
+
+    public void DisableBoxCollider()
+    {
+        boxCollider.enabled = false;
+    }
+
+    public void ActivateBoxCollider()
+    {
+        boxCollider.enabled = true;
     }
 
     IEnumerator WaitForMovement()

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Movement : MonoBehaviour
 {
-    enum GravityDirection {UP, DOWN, LEFT, RIGHT}
+    enum GravityDirection { UP, DOWN, LEFT, RIGHT }
 
     // Start is called before the first frame update
     [SerializeField] Transform origin, groundCenter, groundLeft, groundRight;
@@ -14,7 +14,8 @@ public class Movement : MonoBehaviour
     public InputMgr PlayerInput;
     Rigidbody2D rb;
     bool canJump = true, wasOnGroundBefore = false, coroutineRunning = false;
-    public float gravityForce, jumpForce, speed, forceCurve, coyoteTime;
+    public float gravityForce, jumpForce, speed, forceCurve, coyoteTime, NchangeGravity;
+    float jumpCounter = 0, gravityCounter = 0;
 
     Vector2 gravityDir;
 
@@ -156,25 +157,28 @@ public class Movement : MonoBehaviour
 
     void ApplyJumpInstant()
     {
-        if (canJump)
+        if (canJump && jumpCounter <= 0)
         {
             rb.velocity = transform.up * jumpForce;
+            jumpCounter += 1;
         }
     }
 
     void IsGrounded()
     {
-        RaycastHit2D raycastHitCenter = Physics2D.Raycast(groundCenter.position, -transform.up, 0.4f, PlatformMask);
+        RaycastHit2D raycastHitCenter = Physics2D.Raycast(groundCenter.position, -transform.up, 1.2f, PlatformMask);
 
-        RaycastHit2D raycastHitLeft = Physics2D.Raycast(groundLeft.position, -transform.up, 0.4f, PlatformMask);
+        RaycastHit2D raycastHitLeft = Physics2D.Raycast(groundLeft.position, -transform.up, 1.2f, PlatformMask);
 
-        RaycastHit2D raycastHitRight = Physics2D.Raycast(groundRight.position, -transform.up, 0.4f, PlatformMask);
+        RaycastHit2D raycastHitRight = Physics2D.Raycast(groundRight.position, -transform.up, 1.2f, PlatformMask);
 
         if (raycastHitLeft)
         {
             canJump = true;
             wasOnGroundBefore = true;
             animator.SetBool("IsJumping", false);
+            jumpCounter = 0;
+            gravityCounter = 0;
             return;
         }
 
@@ -182,6 +186,8 @@ public class Movement : MonoBehaviour
         {
             canJump = true;
             animator.SetBool("IsJumping", false);
+            jumpCounter = 0;
+            gravityCounter = 0;
             return;
         }
 
@@ -196,10 +202,11 @@ public class Movement : MonoBehaviour
         else
         {
             animator.SetBool("IsJumping", true);
+            canJump = false;
             return;
         }
 
-        
+
     }
 
     IEnumerator CoyoteTime()
@@ -234,9 +241,15 @@ public class Movement : MonoBehaviour
 
     void ChangeDirGravity(Vector2 dir)
     {
-        gravityDir = dir;
-        transform.up = -gravityDir;
-        rb.velocity = new Vector2(rb.velocity.x / forceCurve, rb.velocity.y / forceCurve);
+        gravityCounter++;
+
+        if (gravityCounter <= NchangeGravity)
+        {
+            gravityDir = dir;
+            transform.up = -gravityDir;
+            rb.velocity = new Vector2(rb.velocity.x / forceCurve, rb.velocity.y / forceCurve);
+        }
+
     }
 
     void ApplyGravityForce()

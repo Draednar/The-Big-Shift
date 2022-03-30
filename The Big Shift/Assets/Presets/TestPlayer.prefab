@@ -131,8 +131,8 @@ GameObject:
   - component: {fileID: 280673171090172053}
   - component: {fileID: 1543448525265435894}
   m_Layer: 0
-  m_Name: HitCollider
-  m_TagString: Player
+  m_Name: Collider
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -164,7 +164,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.025567532, y: -0.68100697}
+  m_Offset: {x: 0.025567532, y: -0.25802255}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -175,7 +175,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.5347662, y: 0.17922616}
+  m_Size: {x: 0.5347662, y: 1.0980536}
   m_EdgeRadius: 0
 --- !u!1 &8590200987315055072
 GameObject:
@@ -195,7 +195,7 @@ GameObject:
   - component: {fileID: 1971983922}
   m_Layer: 0
   m_Name: TestPlayer
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -598,7 +598,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.006683111, y: -0.13932312}
+  m_Offset: {x: 0.034357548, y: -0.7033962}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -609,7 +609,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.712049, y: 1.3329022}
+  m_Size: {x: 0.54806805, y: 0.20475602}
   m_EdgeRadius: 0
 --- !u!95 &1971983922
 Animator:

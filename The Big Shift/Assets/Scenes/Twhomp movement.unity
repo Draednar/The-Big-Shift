@@ -180,6 +180,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &431185186 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8590200987315055072, guid: b504317251883da499f30dcea47d965c, type: 3}
+  m_PrefabInstance: {fileID: 782642289}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &480565403
 GameObject:
   m_ObjectHideFlags: 0
@@ -5385,7 +5390,6 @@ GameObject:
   - component: {fileID: 700534201}
   - component: {fileID: 700534200}
   - component: {fileID: 700534202}
-  - component: {fileID: 700534203}
   m_Layer: 3
   m_Name: Collidable
   m_TagString: enemy
@@ -5726,18 +5730,6 @@ MonoBehaviour:
   back: {x: 20, y: 10, z: 0}
   forth: {x: 20, y: 0, z: 0}
   speed: 0.5
---- !u!114 &700534203
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 700534195}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ac5dcab8ff860e545b6eb26b6c954beb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &782642289
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5757,6 +5749,10 @@ PrefabInstance:
       propertyPath: m_IsTrigger
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8590200987315055075, guid: b504317251883da499f30dcea47d965c, type: 3}
+      propertyPath: Player
+      value: 
+      objectReference: {fileID: 431185186}
     - target: {fileID: 8590200987315055078, guid: b504317251883da499f30dcea47d965c, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -5816,9 +5812,7 @@ GameObject:
   - component: {fileID: 993699174}
   - component: {fileID: 993699178}
   - component: {fileID: 993699177}
-  - component: {fileID: 993699180}
   - component: {fileID: 993699176}
-  - component: {fileID: 993699179}
   m_Layer: 3
   m_Name: Traps
   m_TagString: enemy
@@ -6437,30 +6431,6 @@ TilemapCollider2D:
   m_Offset: {x: 0, y: 0}
   m_MaximumTileChangeCount: 1000
   m_ExtrusionFactor: 0.00001
---- !u!114 &993699179
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 993699172}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ac5dcab8ff860e545b6eb26b6c954beb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &993699180
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 993699172}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ac5dcab8ff860e545b6eb26b6c954beb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &993825082
 GameObject:
   m_ObjectHideFlags: 0

@@ -12,6 +12,7 @@ public class Movement : MonoBehaviour
     Rigidbody2D rb;
     bool canJump = true;
     public float gravityForce, jumpForce, speed, forceCurve;
+    public GameObject Player;
 
     Vector2 gravityDir;
 
@@ -197,6 +198,22 @@ public class Movement : MonoBehaviour
         {
             rb.velocity = gravityDir * gravityForce;
         }
+    }
+    void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (GameObject.FindWithTag("enemy"))
+        {
+            speed = 0;
+            gravityForce = 0f;
+            animator.SetBool("Collide", true);
+            Kill();
+        }
+        
+
+    }
+    private void Kill()
+    {
+        Destroy(Player,1);
     }
 
 }

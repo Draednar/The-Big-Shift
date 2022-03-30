@@ -4,11 +4,12 @@ using UnityEngine;
 
 
 public class Death : MonoBehaviour
-{ 
+{
+    Animator animator;    
     // Start is called before the first frame update
     void Start()
     {
-        
+        animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -18,9 +19,9 @@ public class Death : MonoBehaviour
     }
     void OnTriggerEnter2D(Collider2D collision)
     {
-        if(GameObject.FindWithTag("Player"))
+        if(GameObject.FindWithTag("enemy"))
         {
-            Debug.Log("you are dead,surprise big not");
+            animator.SetBool("Collide", true);
         }
         else { }
        

@@ -20,6 +20,7 @@ public class EnemyHit : MonoBehaviour
         if (collision.tag == "Player" && canTakeDamage)
         {
             collision.GetComponent<Movement>().SetCanJump(true);
+            collision.GetComponent<Movement>().ApplyLittleJump();
             animator.SetTrigger("IsHit");
             canTakeDamage = false;
             enemy.startMoving = false;
@@ -30,7 +31,7 @@ public class EnemyHit : MonoBehaviour
 
     IEnumerator JumpTime()
     {
-        yield return new WaitForSeconds(0.3f);
+        yield return new WaitForSeconds(0.6f);
         enemy.DisableBoxCollider();
     }
 

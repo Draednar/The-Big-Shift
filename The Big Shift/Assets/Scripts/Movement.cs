@@ -164,6 +164,11 @@ public class Movement : MonoBehaviour
         }
     }
 
+    public void ApplyLittleJump()
+    {
+        rb.velocity = transform.up * (jumpForce / 2);
+    }
+
     void IsGrounded()
     {
         RaycastHit2D raycastHitCenter = Physics2D.Raycast(groundCenter.position, -transform.up, 1.2f, PlatformMask);

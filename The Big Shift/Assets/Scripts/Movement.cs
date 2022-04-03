@@ -13,6 +13,7 @@ public class Movement : MonoBehaviour
     bool canJump = true;
     public float gravityForce, jumpForce, speed, forceCurve;
     public GameObject Player;
+    Vector3 startPosition;
 
     Vector2 gravityDir;
 
@@ -22,6 +23,7 @@ public class Movement : MonoBehaviour
         animator = GetComponent<Animator>();
         ApplyJumpInstant();
         gravityDir = Vector2.down;
+        startPosition = transform.position;
     }
 
     private void OnEnable()
@@ -203,10 +205,10 @@ public class Movement : MonoBehaviour
     {
         if (GameObject.FindWithTag("enemy"))
         {
-            speed = 0;
-            gravityForce = 0f;
+           
             animator.SetBool("Collide", true);
-            Kill();
+
+            Invoke("Respawn", 1.0f);
         }
         
 
@@ -215,5 +217,12 @@ public class Movement : MonoBehaviour
     {
         Destroy(Player,1);
     }
+    void Respawn()
+    {
+        transform.position = startPosition;
+        animator.SetBool("Spawn", true);
+        animator.SetBool("Collide", false);
+    }
+
 
 }

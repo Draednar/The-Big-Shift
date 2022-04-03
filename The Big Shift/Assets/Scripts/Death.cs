@@ -21,7 +21,9 @@ public class Death : MonoBehaviour
     {
         if(GameObject.FindWithTag("enemy"))
         {
+            
             animator.SetBool("Collide", true);
+            
         }
         else { }
        

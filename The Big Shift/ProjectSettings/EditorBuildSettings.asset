@@ -8,7 +8,16 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/SampleScene.unity
     guid: d1c3109bdb54ad54c8a2b2838528e640
-  - enabled: 0
+  - enabled: 1
+    path: "Assets/Scenes/Men\xF9UI.unity"
+    guid: 0c8fb1d35c4dc1940918937c84ba83e1
+  - enabled: 1
+    path: Assets/Scenes/LevelSelector.unity
+    guid: 4d0dcac958943854288354f24bb97a09
+  - enabled: 1
     path: Assets/Scenes/Livello_1.unity
     guid: 8c2e7dad79b958a479e532013a114d39
+  - enabled: 1
+    path: Assets/Scenes/Livello_2.unity
+    guid: 33bbc846e77ea484583a8d8fea4bcbca
   m_configObjects: {}

@@ -171,11 +171,11 @@ public class Movement : MonoBehaviour
 
     void IsGrounded()
     {
-        RaycastHit2D raycastHitCenter = Physics2D.Raycast(groundCenter.position, -transform.up, 1.2f, PlatformMask);
+        RaycastHit2D raycastHitCenter = Physics2D.Raycast(groundCenter.position, -transform.up, 0.5f, PlatformMask);
 
-        RaycastHit2D raycastHitLeft = Physics2D.Raycast(groundLeft.position, -transform.up, 1.2f, PlatformMask);
+        RaycastHit2D raycastHitLeft = Physics2D.Raycast(groundLeft.position, -transform.up, 0.5f, PlatformMask);
 
-        RaycastHit2D raycastHitRight = Physics2D.Raycast(groundRight.position, -transform.up, 1.2f, PlatformMask);
+        RaycastHit2D raycastHitRight = Physics2D.Raycast(groundRight.position, -transform.up, 0.5f, PlatformMask);
 
         if (raycastHitLeft)
         {

@@ -29,8 +29,6 @@ public class Centipede : Boss
 
     public override void Update()
     {
-        Debug.Log(castAtkDone);
-
         if (spawnMinions)
         {
             SpawnMinions();

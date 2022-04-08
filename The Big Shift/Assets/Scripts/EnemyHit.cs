@@ -31,7 +31,7 @@ public class EnemyHit : MonoBehaviour
 
     IEnumerator JumpTime()
     {
-        yield return new WaitForSeconds(1.3f);
+        yield return new WaitForSeconds(0.6f);
         enemy.DisableBoxCollider();
     }
 

@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2347440588011749626}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Origin
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -40,10 +40,13 @@ GameObject:
   m_Component:
   - component: {fileID: 2347440588256156307}
   - component: {fileID: 2347440588256156308}
+  - component: {fileID: 1760353268566346441}
   - component: {fileID: 2347440588256156309}
+  - component: {fileID: 267933946447960003}
+  - component: {fileID: 3524351050110098864}
   m_Layer: 6
   m_Name: HeadCollider
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -75,7 +78,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.16357327, y: 0.3683505}
+  m_Offset: {x: 0.029123306, y: 0.3683505}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -86,7 +89,33 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.34652138, y: 0.1082201}
+  m_Size: {x: 0.7654915, y: 0.1082201}
+  m_EdgeRadius: 0
+--- !u!61 &1760353268566346441
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2347440588256156306}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.45009422, y: -0.045929432}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.08677292, y: 0.90814114}
   m_EdgeRadius: 0
 --- !u!114 &2347440588256156309
 MonoBehaviour:
@@ -103,6 +132,58 @@ MonoBehaviour:
   animator: {fileID: 2347440589106076622}
   enemy: {fileID: 2347440589106076619}
   invulnerabilityFrames: 0
+--- !u!61 &267933946447960003
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2347440588256156306}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.4892702, y: -0.04307556}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.11351967, y: 0.9138489}
+  m_EdgeRadius: 0
+--- !u!61 &3524351050110098864
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2347440588256156306}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
 --- !u!1 &2347440589106076616
 GameObject:
   m_ObjectHideFlags: 0
@@ -117,9 +198,9 @@ GameObject:
   - component: {fileID: 2347440589106076620}
   - component: {fileID: 2347440589106076619}
   - component: {fileID: 2347440589106076622}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Enemy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -204,7 +285,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.008565903, y: -0.26106215}
+  m_Offset: {x: -0.15715408, y: -0.19327831}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -215,7 +296,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.72236633, y: 0.781724}
+  m_Size: {x: 0.92794037, y: 0.91729164}
   m_EdgeRadius: 0
 --- !u!50 &2347440589106076620
 Rigidbody2D:
@@ -255,9 +336,10 @@ MonoBehaviour:
   PlatformMask:
     serializedVersion: 2
     m_Bits: 8
+  enemyHit: {fileID: 2347440588256156309}
   speed: 5
   waitForMovement: 1.5
-  HitPoints: 2
+  HitPoints: 1
 --- !u!95 &2347440589106076622
 Animator:
   serializedVersion: 3

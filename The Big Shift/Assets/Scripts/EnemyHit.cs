@@ -10,6 +10,14 @@ public class EnemyHit : MonoBehaviour
     public float invulnerabilityFrames;
     bool canTakeDamage = true;
 
+    public bool hitPriority { get; set; }
+    public bool died { get; set; }
+
+    private void OnEnable()
+    {
+        died = false;
+    }
+
     void Update()
     {
         IFrames();
@@ -19,6 +27,7 @@ public class EnemyHit : MonoBehaviour
     {
         if (collision.tag == "Player" && canTakeDamage)
         {
+            hitPriority = true;
             collision.GetComponent<Movement>().SetCanJump(true);
             collision.GetComponent<Movement>().ApplyLittleJump();
             animator.SetTrigger("IsHit");
@@ -37,9 +46,14 @@ public class EnemyHit : MonoBehaviour
 
     void IFrames()
     {
-        if (animator.GetCurrentAnimatorStateInfo(0).IsName("Hit") && animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.8f)
+        if (enemy.HitPoints <= 0)
         {
-            if (enemy.HitPoints <= 0)
+            died = true;
+        }
+
+            if (animator.GetCurrentAnimatorStateInfo(0).IsName("Hit") && animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.8f)
+        {
+            if (died)
             {
                 enemy.gameObject.SetActive(false);
             }

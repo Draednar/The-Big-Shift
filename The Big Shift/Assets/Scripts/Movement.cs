@@ -185,7 +185,7 @@ public class Movement : MonoBehaviour
         {
             canJump = true;
             wasOnGroundBefore = true;
-            animator.SetBool("IsJumping", false);
+            //animator.SetBool("IsJumping", false);
             jumpCounter = 0;
             gravityCounter = 0;
             return;
@@ -194,7 +194,7 @@ public class Movement : MonoBehaviour
         else if (raycastHitCenter || raycastHitRight)
         {
             canJump = true;
-            animator.SetBool("IsJumping", false);
+            //animator.SetBool("IsJumping", false);
             jumpCounter = 0;
             gravityCounter = 0;
             return;
@@ -210,7 +210,7 @@ public class Movement : MonoBehaviour
 
         else
         {
-            animator.SetBool("IsJumping", true);
+            //animator.SetBool("IsJumping", true);
             canJump = false;
             return;
         }

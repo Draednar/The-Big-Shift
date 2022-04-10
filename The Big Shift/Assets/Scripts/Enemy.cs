@@ -121,7 +121,7 @@ public class Enemy : MonoBehaviour
 
     IEnumerator CollisionPriorityCheck()
     {
-        yield return new WaitForSeconds(0.1f);
+        yield return new WaitForEndOfFrame();
 
         if (!enemyHit.hitPriority && playerHitPriority && !enemyHit.died)
         {

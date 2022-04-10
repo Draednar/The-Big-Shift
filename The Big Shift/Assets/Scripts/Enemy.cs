@@ -10,6 +10,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] Transform origin;
     [SerializeField] GravityDirection direction;
     [SerializeField] LayerMask PlatformMask;
+    [SerializeField] EnemyHit enemyHit;
 
     public float speed, waitForMovement, HitPoints;
     float movementDir = -1;
@@ -20,6 +21,7 @@ public class Enemy : MonoBehaviour
 
     bool wasOnGround = false;
     public bool startMoving { get; set; }
+    public bool playerHitPriority { get; set; }
 
     void Start()
     {
@@ -97,6 +99,40 @@ public class Enemy : MonoBehaviour
             return;
         }
 
+    }
+
+    private void OnCollisionStay2D(Collision2D collision)
+    {
+        if (collision.transform.tag == "Player")
+        {
+            playerHitPriority = true;
+            StartCoroutine(CollisionPriorityCheck());
+        }
+    }
+
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        if (collision.transform.tag == "Player")
+        {
+            playerHitPriority = false;
+            enemyHit.hitPriority = false;
+        }
+    }
+
+    IEnumerator CollisionPriorityCheck()
+    {
+        yield return new WaitForEndOfFrame();
+
+        if (!enemyHit.hitPriority && playerHitPriority && !enemyHit.died)
+        {
+            KillPlayer();
+        }
+
+    }
+
+    void KillPlayer()
+    {
+        ResetLevel.ResetLevelS();
     }
 
     void FlipSprite()

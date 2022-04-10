@@ -12,4 +12,12 @@ public class ResetLevel : MonoBehaviour
             SceneManager.LoadScene(0);
         }   
     }
+
+    public static void ResetLevelS()
+    {
+        Scene s = SceneManager.GetActiveScene();
+
+        SceneManager.LoadScene(s.name);
+        
+    }
 }

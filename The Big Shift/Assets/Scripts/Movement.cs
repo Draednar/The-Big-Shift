@@ -9,13 +9,15 @@ public class Movement : MonoBehaviour
     // Start is called before the first frame update
     [SerializeField] Transform origin, groundCenter, groundLeft, groundRight;
     [SerializeField] GravityDirection gravity;
+    [SerializeField] BoxCollider2D boxCollider, jumpCollider;
+    [SerializeField] LayerMask enemyMask;
     public LayerMask PlatformMask;
     Animator animator;
     public InputMgr PlayerInput;
     Rigidbody2D rb;
-    bool canJump = true, wasOnGroundBefore = false, coroutineRunning = false;
+    bool canJump = true, wasOnGroundBefore = false, coroutineRunning = false, enemyContact = false, hitContact = false, counter = false;
     public float gravityForce, jumpForce, speed, forceCurve, coyoteTime, NchangeGravity;
-    float jumpCounter = 0, gravityCounter = 0;
+    float jumpCounter = 0, gravityCounter = 0, maxTimer = 10, timer;
 
     Vector2 gravityDir;
 
@@ -24,6 +26,7 @@ public class Movement : MonoBehaviour
         StartGravityDirection();
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
+        timer = maxTimer;
     }
 
     private void OnEnable()
@@ -43,6 +46,7 @@ public class Movement : MonoBehaviour
     {
         IsGrounded();
         ApplyGravityForce();
+        //CheckEnemyContact();
         MovePlayer();
     }
 
@@ -243,6 +247,23 @@ public class Movement : MonoBehaviour
         transform.up = -gravityDir;
 
     }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.transform.tag == "Traps")
+        {
+            ResetLevel.ResetLevelS();
+        }
+    }
+
+    void PlayerDeath()
+    {
+        Debug.Log("player died");
+        //hitContact = false;
+        //enemyContact = false;
+        ResetLevel.ResetLevelS();
+    }
+
 
     void ChangeDirGravity(Vector2 dir)
     {

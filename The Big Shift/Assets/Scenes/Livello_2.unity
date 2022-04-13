@@ -1953,26 +1953,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: TestPlayer
       objectReference: {fileID: 0}
-    - target: {fileID: 8590200987315055075, guid: b504317251883da499f30dcea47d965c, type: 3}
-      propertyPath: speed
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 8590200987315055075, guid: b504317251883da499f30dcea47d965c, type: 3}
-      propertyPath: gravity
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8590200987315055075, guid: b504317251883da499f30dcea47d965c, type: 3}
-      propertyPath: jumpForce
-      value: 48
-      objectReference: {fileID: 0}
-    - target: {fileID: 8590200987315055075, guid: b504317251883da499f30dcea47d965c, type: 3}
-      propertyPath: gravityForce
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 8590200987315055075, guid: b504317251883da499f30dcea47d965c, type: 3}
-      propertyPath: NchangeGravity
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 8590200987315055078, guid: b504317251883da499f30dcea47d965c, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -3457,7 +3437,7 @@ GameObject:
   - component: {fileID: 789271414}
   m_Layer: 3
   m_Name: Traps
-  m_TagString: Untagged
+  m_TagString: Traps
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -20083,6 +20063,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2347440588256156309, guid: 8030a727e6890dc40892a591c8f825ae, type: 3}
+      propertyPath: invulnerabilityFrames
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2347440589106076616, guid: 8030a727e6890dc40892a591c8f825ae, type: 3}
       propertyPath: m_Name
       value: Enemy

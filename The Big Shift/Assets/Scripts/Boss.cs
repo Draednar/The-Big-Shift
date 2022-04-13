@@ -11,8 +11,11 @@ public class Boss : MonoBehaviour
     [SerializeField] protected GameObject player;
     [SerializeField] protected float HP;
 
+    public float hitPoint { get; set; }
+
     void Start()
     {
+        hitPoint = HP;
         animator = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
     }

@@ -29,7 +29,6 @@ public class Centipede : Boss
 
     public override void Update()
     {
-        Debug.Log(castAtkDone);
 
         if (spawnMinions)
         {
@@ -124,7 +123,7 @@ public class Centipede : Boss
     void SpawnMinions()
     {
 
-        if (count >= 3)
+        if (count >= 5)
         {
             count = 0;
             CancelInvoke();

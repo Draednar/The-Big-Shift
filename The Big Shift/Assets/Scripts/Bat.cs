@@ -9,7 +9,7 @@ public class Bat : MonoBehaviour
     Vector2 positionToFollow, direction;
     bool startAtk = false;
     Rigidbody2D rb;
-    float speed = 10f;
+    float speed = 13f;
 
     private void Awake()
     {

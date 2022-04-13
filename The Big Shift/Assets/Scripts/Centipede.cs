@@ -5,15 +5,38 @@ using UnityEngine;
 public class Centipede : Boss
 {
 
-    [SerializeField] float MeleeRange, Speed;
-    [SerializeField] Transform Origin;
+    [SerializeField] float MeleeRange, Speed, MaxSpawnTime, Delay;
+    [SerializeField] Transform Origin, Parent;
     [SerializeField] LayerMask PlatformMask;
-    bool startNextAtk = false, coroutineRunning = false, stopMoving = true;
+    [SerializeField] Animator wallLeft, wallRight, wallUp, wallDown;
+    List<GameObject> Minions = new List<GameObject>();
+    bool startNextAtk = false, coroutineRunning = false, spawnMinions, stopMoving = true, castAtkDone = false, canCastAtk = true;
     float delayAtk = 1f, movementDir = -1;
 
+    int count = 0;
+
+    int countCast = 0;
+
+    enum WallActivation { Left = 1, Right, Up, Down}
+
+    private void Awake()
+    {
+        for (int i = 0; i < Parent.childCount; i++)
+        {
+            Minions.Add(Parent.GetChild(i).gameObject);
+        }
+    }
 
     public override void Update()
     {
+        Debug.Log(castAtkDone);
+
+        if (spawnMinions)
+        {
+            SpawnMinions();
+            return;
+        }
+
         if (startNextAtk && stopMoving)
         {
             CheckDistanceToPlayer();
@@ -45,6 +68,7 @@ public class Centipede : Boss
         startNextAtk = true;
     }
 
+
     public override void CheckDistanceToPlayer()
     {
         if (Vector2.Distance(transform.position, player.transform.position) < MeleeRange)
@@ -61,14 +85,6 @@ public class Centipede : Boss
 
     public override void AttackMelee()
     {
-        int chance = Random.Range(0, 18);
-
-        if (chance >= 0 && chance <= 8)
-        {
-            AttackMelee_1();
-            return;
-        }
-
         AttackMelee_2();
     }
 
@@ -76,7 +92,7 @@ public class Centipede : Boss
     {
         int chance = Random.Range(0, 18);
 
-        if (chance >= 0 && chance <= 10)
+        if (chance >= 0 && chance <= 10 || castAtkDone || !canCastAtk)
         {
             AttackRanged_1();
             return;
@@ -101,13 +117,87 @@ public class Centipede : Boss
     public override void AttackRanged_1()
     {
         animator.SetTrigger("Atk_Range_1");
-        delayAtk = Random.Range(1.5f, 3f);
+        delayAtk = Random.Range(2f, 4f);
+        InvokeRepeating(nameof(SpawnMinions), MaxSpawnTime, Delay);
+    }
+
+    void SpawnMinions()
+    {
+
+        if (count >= 3)
+        {
+            count = 0;
+            CancelInvoke();
+            return;
+        }
+
+        float posX = Random.Range(-6.92f, 11.21f);
+        float posY = Random.Range(2.66f, 5.49f);
+
+        for (int i = 0; i < Minions.Count; i++)
+        {
+            if (!Minions[i].activeSelf)
+            {
+                Minions[i].SetActive(true);
+                Minions[i].transform.localPosition = new Vector2(posX, posY);
+                count++;
+                break;
+            }
+        }
     }
 
     public override void AttackRanged_2()
     {
         animator.SetTrigger("Atk_Range_2");
-        delayAtk = Random.Range(2f, 3.5f);
+        delayAtk = Random.Range(3f, 5f);
+
+        for (int i = 0; i < 3; i++)
+        {
+            int value = Random.Range(1, 4);
+            ActivateWall((WallActivation)value);
+        }
+
+        canCastAtk = false;
+        castAtkDone = true;
+        StartCoroutine(DeactivateCastAtk());
+
+    }
+
+    IEnumerator DeactivateCastAtk()
+    {
+        yield return new WaitForSeconds(8f);
+        castAtkDone = false;
+        DeactivateWall();
+        yield return new WaitForSeconds(5f);
+        canCastAtk = true;
+
+    }
+
+    void ActivateWall(WallActivation value)
+    {
+        switch (value)
+        {
+            case WallActivation.Left:
+                wallLeft.SetBool("Activate", true);
+                break;
+            case WallActivation.Right:
+                wallRight.SetBool("Activate", true);
+                break;
+            case WallActivation.Up:
+                wallUp.SetBool("Activate", true);
+                break;
+            case WallActivation.Down:
+                wallDown.SetBool("Activate", true);
+                break;
+        }
+    }
+
+    void DeactivateWall()
+    {
+        wallLeft.SetBool("Activate", false);
+        wallRight.SetBool("Activate", false);
+        wallUp.SetBool("Activate", false);
+        wallDown.SetBool("Activate", false);
     }
 
     void Locomotion()

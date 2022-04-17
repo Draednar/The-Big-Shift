@@ -19,6 +19,9 @@ public class Enemy : MonoBehaviour
     BoxCollider2D boxCollider;
     Animator animator;
 
+    Vector2 startPos;
+    float startDir;
+
     bool wasOnGround = false;
     public bool startMoving { get; set; }
     public bool playerHitPriority { get; set; }
@@ -29,6 +32,8 @@ public class Enemy : MonoBehaviour
         animator = GetComponent<Animator>();
         boxCollider = GetComponent<BoxCollider2D>();
         startMoving = true;
+        startPos = rb.position;
+        startDir = movementDir;
     }
 
     // Update is called once per frame
@@ -106,7 +111,7 @@ public class Enemy : MonoBehaviour
         if (collision.transform.tag == "Player")
         {
             playerHitPriority = true;
-            StartCoroutine(CollisionPriorityCheck());
+            StartCoroutine(CollisionPriorityCheck(collision.gameObject));
         }
     }
 
@@ -119,20 +124,15 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    IEnumerator CollisionPriorityCheck()
+    IEnumerator CollisionPriorityCheck(GameObject player)
     {
         yield return new WaitForEndOfFrame();
 
         if (!enemyHit.hitPriority && playerHitPriority && !enemyHit.died)
         {
-            KillPlayer();
+            player.GetComponent<Movement>().PlayerDeath();
         }
 
-    }
-
-    void KillPlayer()
-    {
-        ResetLevel.ResetLevelS();
     }
 
     void FlipSprite()
@@ -214,6 +214,10 @@ public class Enemy : MonoBehaviour
 
     }
 
-
+    public void ResetEnemy()
+    {
+        rb.position = startPos;
+        movementDir = startDir;
+    }
 
 }

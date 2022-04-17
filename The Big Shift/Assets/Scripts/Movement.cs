@@ -20,7 +20,12 @@ public class Movement : MonoBehaviour
     public float gravityForce, jumpForce, speed, forceCurve, coyoteTime, NchangeGravity;
     float jumpCounter = 0, gravityCounter = 0, maxTimer = 10, timer;
 
-    Vector2 gravityDir;
+    public int deathCounter { get; private set; }
+
+    Vector2 gravityDir, startPos;
+
+    public delegate void Reset();
+    public static event Reset resetLevel;
 
     void Start()
     {
@@ -28,6 +33,9 @@ public class Movement : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         timer = maxTimer;
+
+        startPos = rb.position;
+
     }
 
     private void OnEnable()
@@ -253,16 +261,25 @@ public class Movement : MonoBehaviour
     {
         if (collision.transform.tag == "Traps")
         {
-            ResetLevel.ResetLevelS();
+            PlayerDeath();
+            return;
         }
     }
 
-    void PlayerDeath()
+    private void OnTriggerStay2D(Collider2D collision)
     {
-        Debug.Log("player died");
-        //hitContact = false;
-        //enemyContact = false;
-        ResetLevel.ResetLevelS();
+        if (collision.transform.tag == "Levels")
+        {
+            ResetLevel.ChangeNextLevel();
+        }
+    }
+
+    public void PlayerDeath()
+    {
+        deathCounter++;
+        rb.position = startPos;
+        StartGravityDirection();
+        resetLevel.Invoke();
     }
 
 

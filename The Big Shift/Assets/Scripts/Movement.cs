@@ -12,6 +12,7 @@ public class Movement : MonoBehaviour
     [SerializeField] GravityDirection gravity;
     [SerializeField] BoxCollider2D boxCollider, jumpCollider;
     [SerializeField] LayerMask enemyMask;
+    [SerializeField] ResetLevel reset;
     public LayerMask PlatformMask;
     Animator animator;
     public InputMgr PlayerInput;
@@ -270,7 +271,7 @@ public class Movement : MonoBehaviour
     {
         if (collision.transform.tag == "Levels")
         {
-            ResetLevel.ChangeNextLevel();
+            reset.ChangeNextLevel();
         }
     }
 

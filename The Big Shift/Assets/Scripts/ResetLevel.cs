@@ -6,7 +6,9 @@ using UnityEngine.SceneManagement;
 public class ResetLevel : MonoBehaviour
 {
     List<Enemy> enemies = new List<Enemy>();
-
+    [SerializeField] Animator animator;
+    bool start = false;
+    public float timeTransition;
     private void Awake()
     {
         for (int i = 0; i < transform.childCount; i++)
@@ -32,14 +34,31 @@ public class ResetLevel : MonoBehaviour
             enemies[i].gameObject.SetActive(true);
             enemies[i].ResetEnemy();
         }
+
     }
 
-    public static void ChangeNextLevel()
+    public void ChangeNextLevel()
     {
-        int index = SceneManager.GetActiveScene().buildIndex;
-        index++;
+        StartCoroutine(Transition(SceneManager.GetActiveScene().buildIndex + 1));
+    }
+
+    IEnumerator Transition(int index)
+    {
+        animator.SetTrigger("Start");
+
+        if (animator.GetCurrentAnimatorStateInfo(0).IsName("FadeIn") && animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1)
+        {
+            start = true;
+        }
+
+        yield return new WaitUntil(() => start);
+
+        start = false;
+
         SceneManager.LoadScene(index);
     }
+
+    
 
     public static void ChangeSpecificScene(int index)
     {

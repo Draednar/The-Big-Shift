@@ -2,14 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-
+using System;
 public class ResetLevel : MonoBehaviour
 {
     List<Enemy> enemies = new List<Enemy>();
     [SerializeField] Animator animator;
     bool start = false;
     public float timeTransition;
-
+    [SerializeField] Movement m;
 
     private void Awake()
     {
@@ -36,8 +36,13 @@ public class ResetLevel : MonoBehaviour
             enemies[i].gameObject.SetActive(true);
             enemies[i].ResetEnemy();
         }
-
     }
+
+    private void Update()
+    {
+        Debug.Log(TimeSpan.FromSeconds(m.timer));
+    }
+
 
     public void ChangeNextLevel()
     {

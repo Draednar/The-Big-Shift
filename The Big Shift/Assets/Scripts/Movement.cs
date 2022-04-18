@@ -22,9 +22,10 @@ public class Movement : MonoBehaviour
     Rigidbody2D rb;
     bool canJump = true, wasOnGroundBefore = false, coroutineRunning = false, enemyContact = false, hitContact = false, counter = false;
     public float gravityForce, jumpForce, speed, forceCurve, coyoteTime, NchangeGravity;
-    float jumpCounter = 0, gravityCounter = 0, maxTimer = 10, timer;
+    float jumpCounter = 0, gravityCounter = 0, maxTimer = 10;
     bool startFallTime = false;
-    float fallTime = 0;
+    public float fallTime { get; private set; }
+    public float timer { get; private set; }
 
     public int deathCounter { get; private set; }
 
@@ -41,9 +42,10 @@ public class Movement : MonoBehaviour
         StartGravityDirection();
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
-        timer = maxTimer;
+        timer = 0;
         Debug.Log(TCamera);
         startPos = rb.position;
+        fallTime = 0;
     }
 
     private void OnEnable()

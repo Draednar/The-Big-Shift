@@ -333,10 +333,13 @@ public class Movement : MonoBehaviour
 
             elapsedTime += Time.deltaTime;
 
+            Gamepad.current.SetMotorSpeeds(force, force);
+
             yield return null;
         }
 
         Camera.localPosition = originalPos;
+        Gamepad.current.ResetHaptics();
 
     }
 

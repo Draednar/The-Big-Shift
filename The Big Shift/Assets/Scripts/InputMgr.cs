@@ -12,6 +12,9 @@ public class InputMgr : MonoBehaviour
     public delegate void GravityDirDelegate(Vector2 dir);
     public event GravityDirDelegate GravityEvent;
 
+    public delegate void OpenMenu(bool value);
+    public static event OpenMenu menu;
+
     public Vector2 MoveDir { get; private set; }
     public Vector2 GravityDir { get; private set; }
 
@@ -19,9 +22,21 @@ public class InputMgr : MonoBehaviour
 
     public PlayerInput playerInput;
 
+    bool menuOpen = false;
+
+    public bool pressedFirstInput = false;
+
+   public float playTime { get; private set; }
+
     public void Move(InputAction.CallbackContext context)
     {
         MoveDir = context.ReadValue<Vector2>();
+
+        if (MoveDir.normalized.magnitude > 0.1)
+        {
+            pressedFirstInput = true;
+        }
+
     }
 
     public void ChangeGravityDirection(InputAction.CallbackContext context)
@@ -32,6 +47,7 @@ public class InputMgr : MonoBehaviour
         {
             //tells the MovementHandler to change the direction of gravity
             GravityEvent.Invoke(GravityDir);
+            pressedFirstInput = true;
         }
     }
 
@@ -40,6 +56,7 @@ public class InputMgr : MonoBehaviour
         if (context.performed)
         {
             //tells the MovementHandler to change the direction of gravity
+            pressedFirstInput = true;
             GravityEvent.Invoke(Vector2.up);
         }
     }
@@ -49,6 +66,7 @@ public class InputMgr : MonoBehaviour
         if (context.performed)
         {
             //tells the MovementHandler to change the direction of gravity
+            pressedFirstInput = true;
             GravityEvent.Invoke(Vector2.down);
         }
     }
@@ -58,6 +76,7 @@ public class InputMgr : MonoBehaviour
         if (context.performed)
         {
             //tells the MovementHandler to change the direction of gravity
+            pressedFirstInput = true;
             GravityEvent.Invoke(Vector2.left);
         }
     }
@@ -67,6 +86,7 @@ public class InputMgr : MonoBehaviour
         if (context.performed)
         {
             //tells the MovementHandler to change the direction of gravity
+            pressedFirstInput = true;
             GravityEvent.Invoke(Vector2.right);
         }
     }
@@ -103,8 +123,20 @@ public class InputMgr : MonoBehaviour
         if (context.performed && !holding_trigger)
         {
             //call another event that tells the animator to send trigger and the MovementHandler to actually jump 
+            pressedFirstInput = true;
             JumpEvent.Invoke();
         }
+    }
+
+    public void UIMenuOpen()
+    {
+        menuOpen = !menuOpen;
+        menu.Invoke(menuOpen);
+    }
+
+    public void ResetBool()
+    {
+        menuOpen = false;
     }
 
 }

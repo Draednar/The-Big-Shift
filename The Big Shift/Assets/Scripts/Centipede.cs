@@ -10,14 +10,39 @@ public class Centipede : Boss
     [SerializeField] LayerMask PlatformMask;
     [SerializeField] Animator wallLeft, wallRight, wallUp, wallDown;
     List<GameObject> Minions = new List<GameObject>();
-    bool startNextAtk = false, coroutineRunning = false, spawnMinions, stopMoving = true, castAtkDone = false, canCastAtk = true;
+    bool startNextAtk = false, coroutineRunning = false, spawnMinions, stopMoving = true, castAtkDone = false, canCastAtk = true, interrupt = false;
     float delayAtk = 1f, movementDir = -1;
 
     int count = 0;
 
     int countCast = 0;
 
+    float originalMovementDir;
+
     enum WallActivation { Left = 1, Right, Up, Down}
+
+    private void OnEnable()
+    {
+        Movement.resetLevel += ResetBoss;
+    }
+
+    private void OnDisable()
+    {
+        Movement.resetLevel -= ResetBoss;
+    }
+
+    void ResetBoss()
+    {
+        hitPoint = HP;
+        rb.position = originalPos;
+        movementDir = originalMovementDir;
+        animator.SetBool("Atk_Melee_2 0", false);
+        stopMoving = true;
+        interrupt = true;
+        DeactivateMinions();
+        DeactivateWall();
+        FlipSprite();
+    }
 
     private void Awake()
     {
@@ -25,6 +50,8 @@ public class Centipede : Boss
         {
             Minions.Add(Parent.GetChild(i).gameObject);
         }
+
+        originalMovementDir = movementDir;
     }
 
     public override void Update()
@@ -123,8 +150,9 @@ public class Centipede : Boss
     void SpawnMinions()
     {
 
-        if (count >= 5)
+        if (count >= 5 || interrupt)
         {
+            interrupt = false;
             count = 0;
             CancelInvoke();
             return;
@@ -145,6 +173,14 @@ public class Centipede : Boss
         }
     }
 
+    void DeactivateMinions()
+    {
+        for (int i = 0; i < Minions.Count; i++)
+        {
+                Minions[i].SetActive(false);
+        }
+    }
+
     public override void AttackRanged_2()
     {
         animator.SetTrigger("Atk_Range_2");
@@ -158,16 +194,16 @@ public class Centipede : Boss
 
         canCastAtk = false;
         castAtkDone = true;
-        StartCoroutine(DeactivateCastAtk());
+        StartCoroutine(DeactivateCastAtk(8f, 5f));
 
     }
 
-    IEnumerator DeactivateCastAtk()
+    IEnumerator DeactivateCastAtk(float delay, float atk)
     {
-        yield return new WaitForSeconds(8f);
+        yield return new WaitForSeconds(delay);
         castAtkDone = false;
         DeactivateWall();
-        yield return new WaitForSeconds(5f);
+        yield return new WaitForSeconds(atk);
         canCastAtk = true;
 
     }

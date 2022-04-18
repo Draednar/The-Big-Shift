@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class Movement : MonoBehaviour
 {
@@ -12,22 +13,39 @@ public class Movement : MonoBehaviour
     [SerializeField] GravityDirection gravity;
     [SerializeField] BoxCollider2D boxCollider, jumpCollider;
     [SerializeField] LayerMask enemyMask;
+    [SerializeField] ResetLevel reset;
+    public GameObject TCamera;
+    public int indexLevel;
     public LayerMask PlatformMask;
     Animator animator;
     public InputMgr PlayerInput;
     Rigidbody2D rb;
     bool canJump = true, wasOnGroundBefore = false, coroutineRunning = false, enemyContact = false, hitContact = false, counter = false;
     public float gravityForce, jumpForce, speed, forceCurve, coyoteTime, NchangeGravity;
-    float jumpCounter = 0, gravityCounter = 0, maxTimer = 10, timer;
+    float jumpCounter = 0, gravityCounter = 0, maxTimer = 10;
+    bool startFallTime = false;
+    public float fallTime { get; private set; }
+    public float timer { get; private set; }
 
-    Vector2 gravityDir;
+    public int deathCounter { get; private set; }
+
+    Vector2 gravityDir, startPos;
+
+    public delegate void Reset();
+    public static event Reset resetLevel;
+
+    public delegate void Score(string name, int i, float time, int deaths);
+    public static event Score playerScore;
 
     void Start()
     {
         StartGravityDirection();
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
-        timer = maxTimer;
+        timer = 0;
+        Debug.Log(TCamera);
+        startPos = rb.position;
+        fallTime = 0;
     }
 
     private void OnEnable()
@@ -49,6 +67,19 @@ public class Movement : MonoBehaviour
         ApplyGravityForce();
         //CheckEnemyContact();
         MovePlayer();
+    }
+
+    private void Update()
+    {
+        if (PlayerInput.pressedFirstInput)
+        {
+            timer += Time.deltaTime;
+        }
+
+        if (startFallTime)
+        {
+            fallTime += Time.deltaTime;
+        }
     }
 
     void MovePlayer()
@@ -182,6 +213,19 @@ public class Movement : MonoBehaviour
 
         RaycastHit2D raycastHitRight = Physics2D.Raycast(groundRight.position, -transform.up, 1.2f, PlatformMask);
 
+        if (!wasOnGroundBefore && raycastHitLeft || raycastHitCenter || raycastHitRight)
+        {
+            startFallTime = false;
+            wasOnGroundBefore = true;
+
+            if (fallTime > 0.35f)
+            {
+                StartCoroutine(CameraShake(0.1f, fallTime));
+            }
+
+            fallTime = 0;
+        }
+
         if (raycastHitLeft)
         {
             canJump = true;
@@ -205,6 +249,7 @@ public class Movement : MonoBehaviour
         {
             wasOnGroundBefore = false;
             canJump = true;
+            startFallTime = true;
             StartCoroutine(CoyoteTime());
             return;
         }
@@ -213,6 +258,7 @@ public class Movement : MonoBehaviour
         {
             //animator.SetBool("IsJumping", true);
             canJump = false;
+            startFallTime = true;
             return;
         }
 
@@ -253,18 +299,60 @@ public class Movement : MonoBehaviour
     {
         if (collision.transform.tag == "Traps")
         {
-            ResetLevel.ResetLevelS();
+            PlayerDeath();
+            return;
         }
     }
 
-    void PlayerDeath()
+    private void OnTriggerStay2D(Collider2D collision)
     {
-        Debug.Log("player died");
-        //hitContact = false;
-        //enemyContact = false;
-        ResetLevel.ResetLevelS();
+        if (collision.transform.tag == "Levels")
+        {
+            reset.ChangeNextLevel();
+            playerScore.Invoke(SceneManager.GetActiveScene().name, indexLevel, timer, deathCounter);
+        }
     }
 
+    public void PlayerDeath()
+    {
+        deathCounter++;
+        rb.position = startPos;
+        StartGravityDirection();
+        resetLevel.Invoke();
+    }
+
+    IEnumerator CameraShake(float duration, float force)
+    {
+        Vector3 originalPos = TCamera.transform.localPosition;
+
+        float elapsedTime = 0f;
+
+        while (elapsedTime <= duration)
+        {
+            float x = Random.Range(-1f, 1f) * force / 8;
+            float y = Random.Range(-1f, 1f) * force / 8;
+
+            TCamera.transform.localPosition = new Vector3(x, y, originalPos.z);
+
+            elapsedTime += Time.deltaTime;
+
+            if (Gamepad.current != null)
+            {
+                Gamepad.current.SetMotorSpeeds(force, force);
+            }
+
+
+            yield return null;
+        }
+
+        TCamera.transform.localPosition = originalPos;
+
+        if (Gamepad.current != null)
+        {
+            Gamepad.current.ResetHaptics();
+        }
+
+    }
 
     void ChangeDirGravity(Vector2 dir)
     {

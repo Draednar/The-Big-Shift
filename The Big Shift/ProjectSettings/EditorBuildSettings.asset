@@ -6,11 +6,8 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: "Assets/Scenes/Men\xF9UI.unity"
-    guid: 0c8fb1d35c4dc1940918937c84ba83e1
-  - enabled: 1
-    path: Assets/Scenes/LevelSelector.unity
-    guid: 4d0dcac958943854288354f24bb97a09
+    path: Assets/Scenes/Selector.unity
+    guid: 1cd93487f644ea84bb2a91a848e34fbc
   - enabled: 1
     path: Assets/Scenes/Livello_1.unity
     guid: 8c2e7dad79b958a479e532013a114d39

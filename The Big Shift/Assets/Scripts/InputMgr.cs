@@ -24,18 +24,9 @@ public class InputMgr : MonoBehaviour
 
     bool menuOpen = false;
 
-    bool pressedFirstInput = false;
+    public bool pressedFirstInput = false;
 
    public float playTime { get; private set; }
-
-    private void Update()
-    {
-        if (pressedFirstInput)
-        {
-            playTime += Time.deltaTime;
-            Debug.Log(playTime);
-        }
-    }
 
     public void Move(InputAction.CallbackContext context)
     {

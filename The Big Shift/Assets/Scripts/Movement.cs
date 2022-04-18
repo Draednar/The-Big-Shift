@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class Movement : MonoBehaviour
 {
@@ -13,6 +14,7 @@ public class Movement : MonoBehaviour
     [SerializeField] BoxCollider2D boxCollider, jumpCollider;
     [SerializeField] LayerMask enemyMask;
     [SerializeField] ResetLevel reset;
+    public int indexLevel;
     public LayerMask PlatformMask;
     Animator animator;
     public InputMgr PlayerInput;
@@ -28,6 +30,9 @@ public class Movement : MonoBehaviour
     public delegate void Reset();
     public static event Reset resetLevel;
 
+    public delegate void Score(string name, int i, float time, int deaths);
+    public static event Score playerScore;
+
     void Start()
     {
         StartGravityDirection();
@@ -36,7 +41,6 @@ public class Movement : MonoBehaviour
         timer = maxTimer;
 
         startPos = rb.position;
-
     }
 
     private void OnEnable()
@@ -58,6 +62,14 @@ public class Movement : MonoBehaviour
         ApplyGravityForce();
         //CheckEnemyContact();
         MovePlayer();
+    }
+
+    private void Update()
+    {
+        if (PlayerInput.pressedFirstInput)
+        {
+            timer += Time.deltaTime;
+        }
     }
 
     void MovePlayer()
@@ -272,6 +284,7 @@ public class Movement : MonoBehaviour
         if (collision.transform.tag == "Levels")
         {
             reset.ChangeNextLevel();
+            playerScore.Invoke(SceneManager.GetActiveScene().name, indexLevel, timer, deathCounter);
         }
     }
 

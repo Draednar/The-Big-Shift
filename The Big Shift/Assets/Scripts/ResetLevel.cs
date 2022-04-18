@@ -9,6 +9,8 @@ public class ResetLevel : MonoBehaviour
     [SerializeField] Animator animator;
     bool start = false;
     public float timeTransition;
+
+
     private void Awake()
     {
         for (int i = 0; i < transform.childCount; i++)

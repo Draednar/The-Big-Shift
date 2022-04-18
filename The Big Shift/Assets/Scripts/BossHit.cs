@@ -7,6 +7,7 @@ public class BossHit : MonoBehaviour
     // Start is called before the first frame update
     [SerializeField] Animator animator;
     [SerializeField] Boss enemy; // need to change to boss
+    [SerializeField] GameObject flag;
     public float invulnerabilityFrames;
     bool canTakeDamage = true;
 
@@ -45,8 +46,8 @@ public class BossHit : MonoBehaviour
 
     IEnumerator JumpTime()
     {
-        yield return new WaitForSeconds(0.6f);
-        canTakeDamage = true;
+        yield return new WaitForSeconds(invulnerabilityFrames);
+        //canTakeDamage = true;
         //enemy.DisableBoxCollider();
     }
 
@@ -57,18 +58,21 @@ public class BossHit : MonoBehaviour
             died = true;
         }
 
-        //if (animator.GetCurrentAnimatorStateInfo(0).IsName("Hit") && animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.8f)
-        //{
-        //    if (died)
-        //    {
-        //        enemy.gameObject.SetActive(false);
-        //    }
+        if (animator.GetCurrentAnimatorStateInfo(0).IsName("Hit") && animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.8f)
+        {
+            if (died)
+            {
+                enemy.gameObject.SetActive(false);
+                flag.gameObject.SetActive(true);
+            }
 
-        //    //enemy.ActivateBoxCollider();
+            //    //enemy.ActivateBoxCollider();
 
-        //    canTakeDamage = true;
-        //    //enemy.startMoving = true;
-        //}
+            canTakeDamage = true;
+            //    //enemy.startMoving = true;
+            //}
+
+        }
 
     }
 }

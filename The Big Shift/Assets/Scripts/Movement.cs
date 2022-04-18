@@ -9,11 +9,12 @@ public class Movement : MonoBehaviour
     enum GravityDirection { UP, DOWN, LEFT, RIGHT }
 
     // Start is called before the first frame update
-    [SerializeField] Transform origin, groundCenter, groundLeft, groundRight, Camera;
+    [SerializeField] Transform origin, groundCenter, groundLeft, groundRight;
     [SerializeField] GravityDirection gravity;
     [SerializeField] BoxCollider2D boxCollider, jumpCollider;
     [SerializeField] LayerMask enemyMask;
     [SerializeField] ResetLevel reset;
+    public GameObject TCamera;
     public int indexLevel;
     public LayerMask PlatformMask;
     Animator animator;
@@ -41,7 +42,7 @@ public class Movement : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         timer = maxTimer;
-
+        Debug.Log(TCamera);
         startPos = rb.position;
     }
 
@@ -320,7 +321,7 @@ public class Movement : MonoBehaviour
 
     IEnumerator CameraShake(float duration, float force)
     {
-        Vector3 originalPos = Camera.transform.localPosition;
+        Vector3 originalPos = TCamera.transform.localPosition;
 
         float elapsedTime = 0f;
 
@@ -329,17 +330,25 @@ public class Movement : MonoBehaviour
             float x = Random.Range(-1f, 1f) * force / 8;
             float y = Random.Range(-1f, 1f) * force / 8;
 
-            Camera.transform.localPosition = new Vector3(x, y, originalPos.z);
+            TCamera.transform.localPosition = new Vector3(x, y, originalPos.z);
 
             elapsedTime += Time.deltaTime;
 
-            Gamepad.current.SetMotorSpeeds(force, force);
+            if (Gamepad.current != null)
+            {
+                Gamepad.current.SetMotorSpeeds(force, force);
+            }
+
 
             yield return null;
         }
 
-        Camera.localPosition = originalPos;
-        Gamepad.current.ResetHaptics();
+        TCamera.transform.localPosition = originalPos;
+
+        if (Gamepad.current != null)
+        {
+            Gamepad.current.ResetHaptics();
+        }
 
     }
 

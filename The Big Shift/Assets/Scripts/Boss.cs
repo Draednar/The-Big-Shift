@@ -11,6 +11,8 @@ public class Boss : MonoBehaviour
     [SerializeField] protected GameObject player;
     [SerializeField] protected float HP;
 
+    protected Vector2 originalPos;
+    
     public float hitPoint { get; set; }
 
     void Start()
@@ -18,6 +20,7 @@ public class Boss : MonoBehaviour
         hitPoint = HP;
         animator = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
+        originalPos = rb.position;
     }
 
     // Update is called once per frame

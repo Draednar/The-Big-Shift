@@ -42,7 +42,7 @@ public class SaveData : MonoBehaviour
         Level l = new Level();
 
         l.name = "Default";
-        l.time = 0f;
+        l.time = 999999f;
         l.deaths = 0;
         l.unlock = 0;
 

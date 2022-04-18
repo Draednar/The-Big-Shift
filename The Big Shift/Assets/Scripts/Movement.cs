@@ -9,7 +9,7 @@ public class Movement : MonoBehaviour
     enum GravityDirection { UP, DOWN, LEFT, RIGHT }
 
     // Start is called before the first frame update
-    [SerializeField] Transform origin, groundCenter, groundLeft, groundRight;
+    [SerializeField] Transform origin, groundCenter, groundLeft, groundRight, Camera;
     [SerializeField] GravityDirection gravity;
     [SerializeField] BoxCollider2D boxCollider, jumpCollider;
     [SerializeField] LayerMask enemyMask;
@@ -22,6 +22,8 @@ public class Movement : MonoBehaviour
     bool canJump = true, wasOnGroundBefore = false, coroutineRunning = false, enemyContact = false, hitContact = false, counter = false;
     public float gravityForce, jumpForce, speed, forceCurve, coyoteTime, NchangeGravity;
     float jumpCounter = 0, gravityCounter = 0, maxTimer = 10, timer;
+    bool startFallTime = false;
+    float fallTime = 0;
 
     public int deathCounter { get; private set; }
 
@@ -69,6 +71,11 @@ public class Movement : MonoBehaviour
         if (PlayerInput.pressedFirstInput)
         {
             timer += Time.deltaTime;
+        }
+
+        if (startFallTime)
+        {
+            fallTime += Time.deltaTime;
         }
     }
 
@@ -203,6 +210,19 @@ public class Movement : MonoBehaviour
 
         RaycastHit2D raycastHitRight = Physics2D.Raycast(groundRight.position, -transform.up, 1.2f, PlatformMask);
 
+        if (!wasOnGroundBefore && raycastHitLeft || raycastHitCenter || raycastHitRight)
+        {
+            startFallTime = false;
+            wasOnGroundBefore = true;
+
+            if (fallTime > 0.35f)
+            {
+                StartCoroutine(CameraShake(0.1f, fallTime));
+            }
+
+            fallTime = 0;
+        }
+
         if (raycastHitLeft)
         {
             canJump = true;
@@ -226,6 +246,7 @@ public class Movement : MonoBehaviour
         {
             wasOnGroundBefore = false;
             canJump = true;
+            startFallTime = true;
             StartCoroutine(CoyoteTime());
             return;
         }
@@ -234,6 +255,7 @@ public class Movement : MonoBehaviour
         {
             animator.SetBool("IsJumping", true);
             canJump = false;
+            startFallTime = true;
             return;
         }
 
@@ -296,6 +318,27 @@ public class Movement : MonoBehaviour
         resetLevel.Invoke();
     }
 
+    IEnumerator CameraShake(float duration, float force)
+    {
+        Vector3 originalPos = Camera.transform.localPosition;
+
+        float elapsedTime = 0f;
+
+        while (elapsedTime <= duration)
+        {
+            float x = Random.Range(-1f, 1f) * force / 8;
+            float y = Random.Range(-1f, 1f) * force / 8;
+
+            Camera.transform.localPosition = new Vector3(x, y, originalPos.z);
+
+            elapsedTime += Time.deltaTime;
+
+            yield return null;
+        }
+
+        Camera.localPosition = originalPos;
+
+    }
 
     void ChangeDirGravity(Vector2 dir)
     {

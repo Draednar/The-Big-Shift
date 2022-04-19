@@ -15,10 +15,10 @@ MonoBehaviour:
   Path: C:/Users/danie/Documents/FMOD Studio/SetAudio/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 637859850629549133
+  lastModified: 637860127303202597
   FileSizes:
   - Name: Desktop
-    Value: 46496
+    Value: 1511296
   Exists: 1
 --- !u!114 &-5590384573573614443
 MonoBehaviour:
@@ -47,6 +47,33 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 0
+--- !u!114 &-5215627768573059197
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Hub
+  m_EditorClassIdentifier: 
+  Path: event:/Hub
+  Guid:
+    Data1: -541686529
+    Data2: 1157724431
+    Data3: 778333357
+    Data4: -1903862022
+  Banks:
+  - {fileID: -7304841927991397720}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 47998
 --- !u!114 &-5073077100959536568
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -89,10 +116,10 @@ MonoBehaviour:
   Path: C:/Users/danie/Documents/FMOD Studio/SetAudio/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 637859850629588993
+  lastModified: 637860127303262440
   FileSizes:
   - Name: Desktop
-    Value: 1172
+    Value: 1320
   Exists: 1
 --- !u!114 &-1653887351049426879
 MonoBehaviour:
@@ -148,6 +175,60 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 0
+--- !u!114 &-1097538653457129321
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Level
+  m_EditorClassIdentifier: 
+  Path: event:/Level
+  Guid:
+    Data1: 1548963193
+    Data2: 1218039517
+    Data3: 2029931428
+    Data4: 2051290217
+  Banks:
+  - {fileID: -7304841927991397720}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 13714
+--- !u!114 &-887929023534864135
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Water
+  m_EditorClassIdentifier: 
+  Path: event:/Water
+  Guid:
+    Data1: -700233782
+    Data2: 1328205606
+    Data3: -1153875282
+    Data4: 536352949
+  Banks:
+  - {fileID: -7304841927991397720}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 29538
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -174,12 +255,16 @@ MonoBehaviour:
   - {fileID: -5073077100959536568}
   - {fileID: -5590384573573614443}
   - {fileID: 302542432137334429}
+  - {fileID: 7509258048907959635}
+  - {fileID: -1097538653457129321}
+  - {fileID: -887929023534864135}
+  - {fileID: -5215627768573059197}
   EditorParameters: []
   MasterBanks:
   - {fileID: -7304841927991397720}
   StringsBanks:
   - {fileID: -2157330752854501286}
-  cacheTime: 637859850629588993
+  cacheTime: 637860127303262440
   cacheVersion: 10
 --- !u!114 &302542432137334429
 MonoBehaviour:
@@ -343,3 +428,30 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 0
+--- !u!114 &7509258048907959635
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Boss
+  m_EditorClassIdentifier: 
+  Path: event:/Boss
+  Guid:
+    Data1: -1803360233
+    Data2: 1130271874
+    Data3: 692704643
+    Data4: -1469782190
+  Banks:
+  - {fileID: -7304841927991397720}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 22857

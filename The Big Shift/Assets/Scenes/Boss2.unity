@@ -771,6 +771,7 @@ MonoBehaviour:
   animator: {fileID: 1409525989}
   timeTransition: 1.8
   m: {fileID: 42905463}
+  buildIndex: 0
 --- !u!4 &321731605
 Transform:
   m_ObjectHideFlags: 0
@@ -2011,7 +2012,7 @@ GameObject:
   - component: {fileID: 1595024246}
   - component: {fileID: 1595024248}
   - component: {fileID: 1595024249}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Traps
   m_TagString: Traps
   m_Icon: {fileID: 0}
@@ -2071,7 +2072,7 @@ TilemapRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 3
+  m_SortingOrder: 8
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
   m_MaxChunkCount: 16

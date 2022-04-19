@@ -317,6 +317,8 @@ public class Movement : MonoBehaviour
     {
         deathCounter++;
         rb.position = startPos;
+        fallTime = 0;
+        wasOnGroundBefore = false;
         StartGravityDirection();
         resetLevel.Invoke();
     }

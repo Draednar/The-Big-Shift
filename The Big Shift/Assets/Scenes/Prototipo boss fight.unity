@@ -7105,6 +7105,41 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 6845728956126373494, guid: fc159223734987b448a201bc15243594, type: 3}
   m_PrefabInstance: {fileID: 919770528}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &748537870 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3046864234966866577, guid: aeb74019f4f598a4f9fe96ece296d26c, type: 3}
+  m_PrefabInstance: {fileID: 1074839232}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &748537871
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 748537870}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: -1803360233
+      Data2: 1130271874
+      Data3: 692704643
+      Data4: -1469782190
+    Path: event:/Boss
+  Event: 
+  PlayEvent: 1
+  StopEvent: 2
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
 --- !u!1001 &757188703
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10015,7 +10050,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3046864234966866582, guid: aeb74019f4f598a4f9fe96ece296d26c, type: 3}
   m_PrefabInstance: {fileID: 1074839232}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 748537870}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d28b0d165bb3b674e8c6a54c7356d724, type: 3}

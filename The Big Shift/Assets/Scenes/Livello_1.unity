@@ -19354,6 +19354,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -90
       objectReference: {fileID: 0}
+    - target: {fileID: 6845728956126373493, guid: fc159223734987b448a201bc15243594, type: 3}
+      propertyPath: m_Size.x
+      value: 1.0658568
+      objectReference: {fileID: 0}
+    - target: {fileID: 6845728956126373493, guid: fc159223734987b448a201bc15243594, type: 3}
+      propertyPath: m_Size.y
+      value: 0.26538062
+      objectReference: {fileID: 0}
+    - target: {fileID: 6845728956126373493, guid: fc159223734987b448a201bc15243594, type: 3}
+      propertyPath: m_Offset.x
+      value: -0.058384
+      objectReference: {fileID: 0}
+    - target: {fileID: 6845728956126373493, guid: fc159223734987b448a201bc15243594, type: 3}
+      propertyPath: m_Offset.y
+      value: -0.9840776
+      objectReference: {fileID: 0}
     - target: {fileID: 6845728956126373494, guid: fc159223734987b448a201bc15243594, type: 3}
       propertyPath: m_Name
       value: Checkpoint (Flag Idle)(64x64)_0

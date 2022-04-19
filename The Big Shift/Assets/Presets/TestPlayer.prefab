@@ -553,6 +553,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerInput: {fileID: 8590200987315055076}
+  pressedFirstInput: 0
 --- !u!114 &8590200987315055075
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -575,6 +576,9 @@ MonoBehaviour:
   enemyMask:
     serializedVersion: 2
     m_Bits: 64
+  reset: {fileID: 0}
+  TCamera: {fileID: 0}
+  indexLevel: 0
   PlatformMask:
     serializedVersion: 2
     m_Bits: 8

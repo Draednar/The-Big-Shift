@@ -10,6 +10,16 @@ public class RisingWater : MonoBehaviour
 
     public bool start { get; set; }
 
+    private void OnEnable()
+    {
+        Movement.resetLevel += ResetWater;
+    }
+
+    private void OnDisable()
+    {
+        Movement.resetLevel -= ResetWater;
+    }
+
     void Start()
     {
         sr = GetComponent<SpriteRenderer>();
@@ -24,5 +34,11 @@ public class RisingWater : MonoBehaviour
             sr.size = new Vector2(sr.size.x, sr.size.y + speed);
             sr.size = new Vector2(sr.size.x, Mathf.Clamp(sr.size.y, 0, MaxHeight));
         }
+    }
+
+    void ResetWater()
+    {
+        start = false;
+        sr.size = new Vector2(sr.size.x, 0);
     }
 }

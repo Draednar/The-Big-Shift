@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028334, g: 0.22571328, b: 0.3069217, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -128,7 +128,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3046864234966866582, guid: aeb74019f4f598a4f9fe96ece296d26c, type: 3}
   m_PrefabInstance: {fileID: 925612839}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 925612840}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d28b0d165bb3b674e8c6a54c7356d724, type: 3}
@@ -9243,6 +9243,34 @@ PrefabInstance:
       propertyPath: m_Name
       value: Audio
       objectReference: {fileID: 0}
+    - target: {fileID: 3046864234966866582, guid: aeb74019f4f598a4f9fe96ece296d26c, type: 3}
+      propertyPath: audioClips.Array.size
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 3046864234966866582, guid: aeb74019f4f598a4f9fe96ece296d26c, type: 3}
+      propertyPath: audioClips.Array.data[7].Name
+      value: Enemy_Hit
+      objectReference: {fileID: 0}
+    - target: {fileID: 3046864234966866582, guid: aeb74019f4f598a4f9fe96ece296d26c, type: 3}
+      propertyPath: audioClips.Array.data[7].event_.Path
+      value: event:/Enemies_Hit
+      objectReference: {fileID: 0}
+    - target: {fileID: 3046864234966866582, guid: aeb74019f4f598a4f9fe96ece296d26c, type: 3}
+      propertyPath: audioClips.Array.data[7].event_.Guid.Data1
+      value: -1376370774
+      objectReference: {fileID: 0}
+    - target: {fileID: 3046864234966866582, guid: aeb74019f4f598a4f9fe96ece296d26c, type: 3}
+      propertyPath: audioClips.Array.data[7].event_.Guid.Data2
+      value: 1298578291
+      objectReference: {fileID: 0}
+    - target: {fileID: 3046864234966866582, guid: aeb74019f4f598a4f9fe96ece296d26c, type: 3}
+      propertyPath: audioClips.Array.data[7].event_.Guid.Data3
+      value: 1330740651
+      objectReference: {fileID: 0}
+    - target: {fileID: 3046864234966866582, guid: aeb74019f4f598a4f9fe96ece296d26c, type: 3}
+      propertyPath: audioClips.Array.data[7].event_.Guid.Data4
+      value: -1119294298
+      objectReference: {fileID: 0}
     - target: {fileID: 3046864234966866583, guid: aeb74019f4f598a4f9fe96ece296d26c, type: 3}
       propertyPath: m_RootOrder
       value: 11
@@ -9289,6 +9317,41 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aeb74019f4f598a4f9fe96ece296d26c, type: 3}
+--- !u!1 &925612840 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3046864234966866577, guid: aeb74019f4f598a4f9fe96ece296d26c, type: 3}
+  m_PrefabInstance: {fileID: 925612839}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &925612841
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 925612840}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: 1548963193
+      Data2: 1218039517
+      Data3: 2029931428
+      Data4: 2051290217
+    Path: event:/Level
+  Event: 
+  PlayEvent: 1
+  StopEvent: 2
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
 --- !u!1 &963739426
 GameObject:
   m_ObjectHideFlags: 0

@@ -31,7 +31,7 @@ public class RisingWater : MonoBehaviour
     {
         if (start)
         {
-            sr.size = new Vector2(sr.size.x, sr.size.y + speed);
+            sr.size = new Vector2(sr.size.x, sr.size.y + speed * Time.deltaTime);
             sr.size = new Vector2(sr.size.x, Mathf.Clamp(sr.size.y, 0, MaxHeight));
         }
     }

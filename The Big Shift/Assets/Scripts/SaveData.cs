@@ -11,11 +11,19 @@ public class SaveData : MonoBehaviour
 
     public Levels level;
 
-    Level[] levels = new Level[6];
+    public Level[] levels { get; private set; }
 
     Level l;
 
     int index = 0;
+
+    int t = 1;
+
+    private void Start()
+    {
+        levels = new Level[6];
+        index = (int)level;
+    }
 
     private void OnEnable()
     {
@@ -113,6 +121,7 @@ public class SaveData : MonoBehaviour
 
         for (int i = 0; i < levels.Length; i++)
         {
+
             XmlElement level = xml.CreateElement("level");
             root.AppendChild(level);
 
@@ -124,28 +133,31 @@ public class SaveData : MonoBehaviour
             deaths.InnerText = levels[i].deaths.ToString();
             level.AppendChild(deaths);
 
+            XmlElement unlock = xml.CreateElement("Unlock");
+            unlock.InnerText = i == index ? l.unlock.ToString() : levels[i].unlock.ToString();
+
             if (i == index && l.time < levels[i].time)
             {
                 time.InnerText = l.time.ToString();
                 deaths.InnerText = l.deaths.ToString();
             }
 
-            XmlElement unlock = xml.CreateElement("Unlock");
-            unlock.InnerText = i == index ? l.unlock.ToString() : levels[i].unlock.ToString();
+            if (i == index + 1)
+            {
+                unlock.InnerText = t.ToString();
+            }
+
             level.AppendChild(unlock);
+
         }
 
         xml.AppendChild(root);
 
         xml.Save(Application.dataPath + "/DataXml.text");
 
-        if (File.Exists(Application.dataPath + "/DataXml.text"))
-        {
-            Debug.Log("working");
-        }
     }
 
-    void ReadXmlFile()
+    public void ReadXmlFile()
     {
         if (!File.Exists(Application.dataPath + "/DataXml.text"))
         {

@@ -6,12 +6,24 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Selector.unity
-    guid: 1cd93487f644ea84bb2a91a848e34fbc
+    path: Assets/Scenes/Livello_Hub.unity
+    guid: d0656a74dca9d3d4183c6cef6230bf5c
   - enabled: 1
     path: Assets/Scenes/Livello_1.unity
     guid: 8c2e7dad79b958a479e532013a114d39
   - enabled: 1
     path: Assets/Scenes/Livello_2.unity
     guid: 33bbc846e77ea484583a8d8fea4bcbca
+  - enabled: 1
+    path: Assets/Scenes/Livello_3.unity
+    guid: 65c8a90a8859517469cb9b9a43e49cf7
+  - enabled: 1
+    path: Assets/Scenes/Livello_4.unity
+    guid: c6736b9114038df47b39e211152d4884
+  - enabled: 1
+    path: Assets/Scenes/Boss2.unity
+    guid: ec7b56059e143264299762e9390dac30
+  - enabled: 1
+    path: Assets/Scenes/Prototipo boss fight.unity
+    guid: 04b397bcde11cd548b9dab5debaa3799
   m_configObjects: {}

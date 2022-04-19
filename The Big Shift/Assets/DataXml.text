@@ -1,13 +1,13 @@
 <List>
   <level>
-    <Time>6,333716</Time>
+    <Time>999999</Time>
     <Deaths>0</Deaths>
     <Unlock>1</Unlock>
   </level>
   <level>
     <Time>999999</Time>
     <Deaths>0</Deaths>
-    <Unlock>0</Unlock>
+    <Unlock>1</Unlock>
   </level>
   <level>
     <Time>999999</Time>

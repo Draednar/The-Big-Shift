@@ -14,6 +14,7 @@ public class Movement : MonoBehaviour
     [SerializeField] BoxCollider2D boxCollider, jumpCollider;
     [SerializeField] LayerMask enemyMask;
     [SerializeField] ResetLevel reset;
+    [SerializeField] AudioMgr clips;
     public GameObject TCamera;
     public int indexLevel;
     public LayerMask PlatformMask;
@@ -197,6 +198,7 @@ public class Movement : MonoBehaviour
         {
             rb.velocity = transform.up * jumpForce;
             jumpCounter += 1;
+            clips.PlayClip(1);
         }
     }
 
@@ -205,7 +207,7 @@ public class Movement : MonoBehaviour
         rb.velocity = transform.up * (jumpForce / 2);
     }
 
-    void IsGrounded()
+    bool IsGrounded()
     {
         RaycastHit2D raycastHitCenter = Physics2D.Raycast(groundCenter.position, -transform.up, 1.2f, PlatformMask);
 
@@ -233,7 +235,7 @@ public class Movement : MonoBehaviour
             //animator.SetBool("IsJumping", false);
             jumpCounter = 0;
             gravityCounter = 0;
-            return;
+            return true;
         }
 
         else if (raycastHitCenter || raycastHitRight)
@@ -242,7 +244,7 @@ public class Movement : MonoBehaviour
             //animator.SetBool("IsJumping", false);
             jumpCounter = 0;
             gravityCounter = 0;
-            return;
+            return true;
         }
 
         if (wasOnGroundBefore && !coroutineRunning)
@@ -251,7 +253,7 @@ public class Movement : MonoBehaviour
             canJump = true;
             startFallTime = true;
             StartCoroutine(CoyoteTime());
-            return;
+            return false;
         }
 
         else
@@ -259,7 +261,7 @@ public class Movement : MonoBehaviour
             //animator.SetBool("IsJumping", true);
             canJump = false;
             startFallTime = true;
-            return;
+            return false;
         }
 
 
@@ -316,6 +318,7 @@ public class Movement : MonoBehaviour
     public void PlayerDeath()
     {
         deathCounter++;
+        clips.PlayClip(3);
         rb.position = startPos;
         fallTime = 0;
         wasOnGroundBefore = false;
@@ -328,6 +331,8 @@ public class Movement : MonoBehaviour
         Vector3 originalPos = TCamera.transform.localPosition;
 
         float elapsedTime = 0f;
+
+        clips.PlayClip(4);
 
         while (elapsedTime <= duration)
         {
@@ -365,6 +370,7 @@ public class Movement : MonoBehaviour
             gravityDir = dir;
             transform.up = -gravityDir;
             rb.velocity = new Vector2(rb.velocity.x / forceCurve, rb.velocity.y / forceCurve);
+            clips.PlayClip(2);
         }
 
     }
@@ -384,6 +390,14 @@ public class Movement : MonoBehaviour
         if (!canJump)
         {
             rb.velocity = gravityDir * gravityForce;
+        }
+    }
+
+    public void PlayMovement()
+    {
+        if (IsGrounded())
+        {
+            clips.PlayClip(0);
         }
     }
 

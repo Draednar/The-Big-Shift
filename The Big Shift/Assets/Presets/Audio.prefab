@@ -1,0 +1,86 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &3046864234966866577
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3046864234966866583}
+  - component: {fileID: 3046864234966866582}
+  m_Layer: 0
+  m_Name: Audio
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3046864234966866583
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3046864234966866577}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 19.090391, y: -1.8850056, z: 0.687747}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3046864234966866582
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3046864234966866577}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d28b0d165bb3b674e8c6a54c7356d724, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioClips:
+  - Name: Player_Movement
+    event_:
+      Guid:
+        Data1: 780514812
+        Data2: 1102317630
+        Data3: -283833697
+        Data4: 608059869
+      Path: event:/Player_Movement
+  - Name: Player_Jump
+    event_:
+      Guid:
+        Data1: -2039446371
+        Data2: 1110435712
+        Data3: -1752809584
+        Data4: -1384158532
+      Path: event:/Player_Jump
+  - Name: Player_Switch
+    event_:
+      Guid:
+        Data1: -236216340
+        Data2: 1086330023
+        Data3: -2038492779
+        Data4: -1808374480
+      Path: event:/Gravity_Switch
+  - Name: Player_Death
+    event_:
+      Guid:
+        Data1: 2095635581
+        Data2: 1118457873
+        Data3: 1445367201
+        Data4: 1555258194
+      Path: event:/Player_Death
+  - Name: Player_CameraShake
+    event_:
+      Guid:
+        Data1: 1054710324
+        Data2: 1177093547
+        Data3: 647568030
+        Data4: 1695919397
+      Path: event:/CametaShake

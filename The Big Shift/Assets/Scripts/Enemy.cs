@@ -11,7 +11,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] GravityDirection direction;
     [SerializeField] LayerMask PlatformMask;
     [SerializeField] EnemyHit enemyHit;
-    [SerializeField] AudioMgr clips;
+    public AudioMgr clips;
     [SerializeField] GameObject player;
 
     public float speed, waitForMovement, HitPoints;

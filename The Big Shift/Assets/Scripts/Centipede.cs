@@ -118,6 +118,8 @@ public class Centipede : Boss
     {
         int chance = Random.Range(0, 18);
 
+        clips.PlayClip(7);
+
         if (chance >= 0 && chance <= 10 || castAtkDone || !canCastAtk)
         {
             AttackRanged_1();
@@ -267,5 +269,10 @@ public class Centipede : Boss
             animator.SetBool("Atk_Melee_2 0", false);
             FlipSprite();
         }
+    }
+
+    public void PlayMovement()
+    {
+        clips.PlayClip(8);
     }
 }

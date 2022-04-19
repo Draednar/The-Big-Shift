@@ -10,6 +10,7 @@ public class Boss : MonoBehaviour
     protected Rigidbody2D rb;
     [SerializeField] protected GameObject player;
     [SerializeField] protected float HP;
+    public AudioMgr clips;
 
     protected Vector2 originalPos;
     

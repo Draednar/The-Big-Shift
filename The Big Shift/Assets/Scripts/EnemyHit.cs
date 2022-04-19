@@ -35,6 +35,7 @@ public class EnemyHit : MonoBehaviour
             enemy.startMoving = false;
             enemy.HitPoints -= 1;
             StartCoroutine(JumpTime());
+            enemy.clips.PlayClip(6);
         }
     }
 

@@ -84,3 +84,19 @@ MonoBehaviour:
         Data3: 647568030
         Data4: 1695919397
       Path: event:/CametaShake
+  - Name: Enemy_Movement
+    event_:
+      Guid:
+        Data1: 254304796
+        Data2: 1160303029
+        Data3: 1148892600
+        Data4: -1891997370
+      Path: event:/Enemy_Movement
+  - Name: Enemy_Hit
+    event_:
+      Guid:
+        Data1: -1376370774
+        Data2: 1298578291
+        Data3: 1330740651
+        Data4: -1119294298
+      Path: event:/Enemies_Hit

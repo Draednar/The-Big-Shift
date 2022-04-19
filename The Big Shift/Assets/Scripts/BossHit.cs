@@ -38,8 +38,8 @@ public class BossHit : MonoBehaviour
             canTakeDamage = false;
             //enemy.startMoving = false;
             //enemy.HitPoints -= 1;
+            enemy.clips.PlayClip(6);
             enemy.hitPoint -= 1;
-            enemy.AttackMelee_2();
             StartCoroutine(JumpTime());
         }
     }
@@ -69,6 +69,7 @@ public class BossHit : MonoBehaviour
             //    //enemy.ActivateBoxCollider();
 
             canTakeDamage = true;
+            enemy.AttackMelee_2();
             //    //enemy.startMoving = true;
             //}
 

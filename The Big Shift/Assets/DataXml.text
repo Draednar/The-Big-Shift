@@ -5,28 +5,28 @@
     <Unlock>1</Unlock>
   </level>
   <level>
-    <Time>999999</Time>
+    <Time>17,41696</Time>
     <Deaths>0</Deaths>
-    <Unlock>0</Unlock>
+    <Unlock>1</Unlock>
+  </level>
+  <level>
+    <Time>34,06777</Time>
+    <Deaths>15</Deaths>
+    <Unlock>1</Unlock>
   </level>
   <level>
     <Time>999999</Time>
     <Deaths>0</Deaths>
-    <Unlock>0</Unlock>
+    <Unlock>1</Unlock>
   </level>
   <level>
-    <Time>999999</Time>
-    <Deaths>0</Deaths>
-    <Unlock>0</Unlock>
+    <Time>144,2439</Time>
+    <Deaths>33</Deaths>
+    <Unlock>1</Unlock>
   </level>
   <level>
-    <Time>999999</Time>
-    <Deaths>0</Deaths>
-    <Unlock>0</Unlock>
-  </level>
-  <level>
-    <Time>999999</Time>
-    <Deaths>0</Deaths>
-    <Unlock>0</Unlock>
+    <Time>36,06995</Time>
+    <Deaths>2</Deaths>
+    <Unlock>1</Unlock>
   </level>
 </List>

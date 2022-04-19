@@ -11,6 +11,8 @@ public class Enemy : MonoBehaviour
     [SerializeField] GravityDirection direction;
     [SerializeField] LayerMask PlatformMask;
     [SerializeField] EnemyHit enemyHit;
+    [SerializeField] AudioMgr clips;
+    [SerializeField] GameObject player;
 
     public float speed, waitForMovement, HitPoints;
     float movementDir = -1;
@@ -214,10 +216,22 @@ public class Enemy : MonoBehaviour
 
     }
 
+    public void PlayMovement()
+    {
+        if (Vector2.Distance(transform.position, player.transform.position) < 15f)
+        {
+            clips.PlayClip(5);
+        }
+    }
+
     public void ResetEnemy()
     {
         rb.position = startPos;
         movementDir = startDir;
+        playerHitPriority = false;
+        enemyHit.hitPriority = false;
+        enemyHit.died = false;
+        HitPoints = 1;
     }
 
 }

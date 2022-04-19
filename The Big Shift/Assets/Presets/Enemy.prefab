@@ -305,11 +305,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   origin: {fileID: 2347440588011749626}
-  direction: 3
+  direction: 0
   PlatformMask:
     serializedVersion: 2
     m_Bits: 8
   enemyHit: {fileID: 2347440588256156309}
+  clips: {fileID: 0}
+  player: {fileID: 0}
   speed: 5
   waitForMovement: 1.5
   HitPoints: 1

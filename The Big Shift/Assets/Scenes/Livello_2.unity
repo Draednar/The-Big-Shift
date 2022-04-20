@@ -21725,6 +21725,10 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 1220634324}
+    - target: {fileID: 2347440589106076619, guid: 8030a727e6890dc40892a591c8f825ae, type: 3}
+      propertyPath: direction
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 3849217277411704898, guid: 8030a727e6890dc40892a591c8f825ae, type: 3}
       propertyPath: m_IsTrigger
       value: 1

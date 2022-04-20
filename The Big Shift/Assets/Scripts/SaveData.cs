@@ -95,7 +95,7 @@ public class SaveData : MonoBehaviour
 
         xml.AppendChild(root);
 
-        xml.Save(Application.dataPath + "/DataXml.text");
+        xml.Save(Application.dataPath + "/StreamingAssets/DataXml.text");
 
     }
 
@@ -153,19 +153,24 @@ public class SaveData : MonoBehaviour
 
         xml.AppendChild(root);
 
-        xml.Save(Application.dataPath + "/DataXml.text");
+        xml.Save(Application.dataPath + "/StreamingAssets/DataXml.text");
 
     }
 
     public void ReadXmlFile()
     {
-        if (!File.Exists(Application.dataPath + "/DataXml.text"))
+        if (!File.Exists(Application.dataPath + "/StreamingAssets/DataXml.text"))
         {
             return;
         }
 
         XmlDocument xmlDocument = new XmlDocument();
-        xmlDocument.Load(Application.dataPath + "/DataXml.text");
+
+        TextAsset textAsset = Resources.Load<TextAsset>("/DataXml");
+
+        //xmlDocument.Load(textAsset.text);
+        xmlDocument.Load(Application.dataPath + "/StreamingAssets/DataXml.text");
+
 
         string path = "//List/level";
         XmlNodeList nodeList = xmlDocument.SelectNodes(path);

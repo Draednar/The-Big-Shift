@@ -521,13 +521,13 @@ MonoBehaviour:
     m_ActionName: ChangeGravity/GravityRIGHT[/DualSenseGamepadHID/buttonEast]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 8590200987315055072}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
+      - m_Target: {fileID: 8590200987315055079}
+        m_TargetAssemblyTypeName: InputMgr, Assembly-CSharp
+        m_MethodName: UIMenuOpen
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -553,6 +553,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerInput: {fileID: 8590200987315055076}
+  menuOpen: 0
   pressedFirstInput: 0
 --- !u!114 &8590200987315055075
 MonoBehaviour:

@@ -310,7 +310,7 @@ public class Movement : MonoBehaviour
     {
         if (collision.transform.tag == "Levels")
         {
-            reset.ChangeNextLevel(0);
+            reset.ChangeNextLevel(1);
             playerScore.Invoke(SceneManager.GetActiveScene().name, indexLevel, timer, deathCounter);
         }
     }

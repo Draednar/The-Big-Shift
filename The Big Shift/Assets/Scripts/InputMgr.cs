@@ -22,7 +22,7 @@ public class InputMgr : MonoBehaviour
 
     public PlayerInput playerInput;
 
-    bool menuOpen = false;
+    public bool menuOpen = false;
 
     public bool pressedFirstInput = false;
 

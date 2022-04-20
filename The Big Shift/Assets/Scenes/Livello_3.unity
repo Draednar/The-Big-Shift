@@ -23479,6 +23479,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Thwomp (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 8226253210863316952, guid: 5cd04b7107ded8643827c2d7568f3d25, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5cd04b7107ded8643827c2d7568f3d25, type: 3}
 --- !u!1 &2093819388

@@ -128,7 +128,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3046864234966866582, guid: aeb74019f4f598a4f9fe96ece296d26c, type: 3}
   m_PrefabInstance: {fileID: 925612839}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 1181763677}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d28b0d165bb3b674e8c6a54c7356d724, type: 3}
@@ -2188,6 +2188,7 @@ GameObject:
   - component: {fileID: 424652022}
   - component: {fileID: 424652021}
   - component: {fileID: 424652020}
+  - component: {fileID: 424652023}
   m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
@@ -2254,8 +2255,22 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 420}
-  m_SizeDelta: {x: 160, y: 119.3031}
+  m_SizeDelta: {x: 300, y: 119.3031}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &424652023
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 424652019}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76ddbcdf94b491345b670d7d025630e0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 299223569}
+  text: {fileID: 424652020}
 --- !u!1 &464907854
 GameObject:
   m_ObjectHideFlags: 0
@@ -3659,7 +3674,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 629168063}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 83c225e9c0b23884092163274a786011, type: 3}
   m_Name: 
@@ -21665,6 +21680,41 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1150529202}
   m_CullTransparentMesh: 1
+--- !u!1 &1181763677 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3046864234966866577, guid: aeb74019f4f598a4f9fe96ece296d26c, type: 3}
+  m_PrefabInstance: {fileID: 925612839}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1181763678
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1181763677}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: 1548963193
+      Data2: 1218039517
+      Data3: 2029931428
+      Data4: 2051290217
+    Path: event:/Level
+  Event: 
+  PlayEvent: 1
+  StopEvent: 2
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
 --- !u!1 &1191505254
 GameObject:
   m_ObjectHideFlags: 0

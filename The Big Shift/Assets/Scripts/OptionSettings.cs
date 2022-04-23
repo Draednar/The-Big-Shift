@@ -40,17 +40,14 @@ public class OptionSettings : MonoBehaviour
         {
             case 0:
                 Screen.fullScreen = true;
-                Debug.Log("0");
                 break;
 
             case 1:
-                Screen.fullScreenMode = FullScreenMode.FullScreenWindow;
-                Debug.Log("1");
+                Screen.fullScreenMode = FullScreenMode.MaximizedWindow;
                 break;
 
             case 2:
                 Screen.fullScreenMode = FullScreenMode.Windowed;
-                Debug.Log("2");
                 break;
         }
     }
@@ -98,6 +95,10 @@ public class OptionSettings : MonoBehaviour
         ScreenMode.value = int.Parse(screen.InnerText);
 
         SetWindowMode(int.Parse(screen.InnerText));
+
+        SetMasterVolume(MasterVolume.value);
+        SetSFXvolume(SFXVolume.value);
+        SetMusicVolume(MusicVolume.value);
     }
 
     public void SaveOptionsData()

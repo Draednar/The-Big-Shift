@@ -26,6 +26,8 @@ public class InputMgr : MonoBehaviour
 
     public bool pressedFirstInput = false;
 
+    bool addedActionMap = false;
+
    public float playTime { get; private set; }
 
     public void Move(InputAction.CallbackContext context)
@@ -111,10 +113,15 @@ public class InputMgr : MonoBehaviour
         if (!holding_trigger)
         {
             playerInput.actions.FindActionMap("ChangeGravity").Disable();
+            addedActionMap = false;
             return;
         }
 
-        playerInput.actions.FindActionMap("ChangeGravity").Enable();
+        if (!addedActionMap)
+        {
+            playerInput.actions.FindActionMap("ChangeGravity").Enable();
+            addedActionMap = true;
+        }
 
     }
 

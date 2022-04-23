@@ -166,8 +166,6 @@ public class SaveData : MonoBehaviour
 
         XmlDocument xmlDocument = new XmlDocument();
 
-        TextAsset textAsset = Resources.Load<TextAsset>("/DataXml");
-
         //xmlDocument.Load(textAsset.text);
         xmlDocument.Load(Application.dataPath + "/StreamingAssets/DataXml.text");
 

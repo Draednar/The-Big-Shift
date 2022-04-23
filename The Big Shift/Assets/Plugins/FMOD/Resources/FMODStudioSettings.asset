@@ -463,8 +463,8 @@ MonoBehaviour:
   SwitchSettingsMigration: 1
   HasSourceProject: 1
   HasPlatforms: 1
-  sourceProjectPath: C:/Users/danie/Documents/FMOD Studio/SetAudio/SetAudio.fspro
-  sourceBankPath: C:/Users/danie/Documents/FMOD Studio/SetAudio/Build
+  sourceProjectPath: ../SetAudio - Copia/SetAudio.fspro
+  sourceBankPath: ../SetAudio - Copia/Build
   SourceBankPathUnformatted: 
   BankRefreshCooldown: 5
   ShowBankRefreshWindow: 1

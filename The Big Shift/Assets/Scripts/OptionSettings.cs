@@ -13,13 +13,14 @@ public class OptionSettings : MonoBehaviour
     public string Master, SFX, Music;
     [SerializeField] Button start;
     [SerializeField] Slider MasterVolume, SFXVolume, MusicVolume;
-    [SerializeField] Dropdown ScreenMode;
-
+    [SerializeField] Dropdown ScreenMode, Resolution;
 
     private void Start()
     {
         start.Select();
         LoadOptionsData();
+
+
     }
 
     public void CloseOptions()
@@ -50,6 +51,43 @@ public class OptionSettings : MonoBehaviour
                 Screen.fullScreenMode = FullScreenMode.Windowed;
                 break;
         }
+    }
+
+    public void SetResolution(int value)
+    {
+        switch (value)
+        {
+            case 0:
+                Screen.SetResolution(1024, 768, Screen.fullScreen);
+                PlayerPrefs.SetInt("Res", 1);
+                PlayerPrefs.SetFloat("Size", 17f);
+
+                break;
+
+            case 1:
+                Screen.SetResolution(1280, 768, Screen.fullScreen);
+                PlayerPrefs.SetInt("Res", 0);
+                PlayerPrefs.SetFloat("Size", 13.5f);
+                break;
+
+            case 2:
+                Screen.SetResolution(1400, 1050, Screen.fullScreen);
+                PlayerPrefs.SetInt("Res", 1);
+                PlayerPrefs.SetFloat("Size", 17f);
+                break;
+
+            case 3: Screen.SetResolution(1600, 900, Screen.fullScreen);
+                PlayerPrefs.SetInt("Res", 0);
+                PlayerPrefs.SetFloat("Size", 12.9f);
+                break;
+
+            case 4: Screen.SetResolution(1920, 1080, Screen.fullScreen);
+                PlayerPrefs.SetInt("Res", 0);
+                PlayerPrefs.SetFloat("Size", 12.9f);
+                break;
+        }
+
+        PlayerPrefs.Save();
     }
 
 
@@ -94,14 +132,16 @@ public class OptionSettings : MonoBehaviour
         XmlNode sfx = master.NextSibling;
         XmlNode music = sfx.NextSibling;
         XmlNode screen = music.NextSibling;
+        XmlNode resolution = screen.NextSibling;
 
         MasterVolume.value = float.Parse(master.InnerText);
         SFXVolume.value = float.Parse(sfx.InnerText);
         MusicVolume.value = float.Parse(music.InnerText);
-
         ScreenMode.value = int.Parse(screen.InnerText);
+        Resolution.value = int.Parse(resolution.InnerText);
 
         SetWindowMode(int.Parse(screen.InnerText));
+        SetResolution(int.Parse(resolution.InnerText));
 
         UpdateVolume();
 
@@ -128,6 +168,10 @@ public class OptionSettings : MonoBehaviour
         XmlElement screen = xml.CreateElement("Screen");
         screen.InnerText = ScreenMode.value.ToString();
         root.AppendChild(screen);
+
+        XmlElement resoultion = xml.CreateElement("Res");
+        resoultion.InnerText = Resolution.value.ToString();
+        root.AppendChild(resoultion);
 
         xml.AppendChild(root);
 

@@ -1,18 +1,18 @@
 <List>
   <level>
-    <Time>19,80663</Time>
-    <Deaths>2</Deaths>
-    <Unlock>1</Unlock>
-  </level>
-  <level>
-    <Time>26,55966</Time>
-    <Deaths>10</Deaths>
+    <Time>999999</Time>
+    <Deaths>0</Deaths>
     <Unlock>1</Unlock>
   </level>
   <level>
     <Time>999999</Time>
     <Deaths>0</Deaths>
-    <Unlock>1</Unlock>
+    <Unlock>0</Unlock>
+  </level>
+  <level>
+    <Time>999999</Time>
+    <Deaths>0</Deaths>
+    <Unlock>0</Unlock>
   </level>
   <level>
     <Time>999999</Time>

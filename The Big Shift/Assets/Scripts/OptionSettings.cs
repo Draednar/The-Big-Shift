@@ -68,6 +68,13 @@ public class OptionSettings : MonoBehaviour
         FMODUnity.RuntimeManager.StudioSystem.setParameterByName(Music, value);
     }
 
+    void UpdateVolume()
+    {
+        SetMasterVolume(MasterVolume.value);
+        SetSFXvolume(SFXVolume.value);
+        SetMusicVolume(MusicVolume.value);
+    }
+
     public void LoadOptionsData()
     {
         if (!File.Exists(Application.dataPath + "/StreamingAssets/Options.text"))
@@ -96,9 +103,8 @@ public class OptionSettings : MonoBehaviour
 
         SetWindowMode(int.Parse(screen.InnerText));
 
-        SetMasterVolume(MasterVolume.value);
-        SetSFXvolume(SFXVolume.value);
-        SetMusicVolume(MusicVolume.value);
+        UpdateVolume();
+
     }
 
     public void SaveOptionsData()
@@ -126,6 +132,8 @@ public class OptionSettings : MonoBehaviour
         xml.AppendChild(root);
 
         xml.Save(Application.dataPath + "/StreamingAssets/Options.text");
+
+        UpdateVolume();
     }
 
 }

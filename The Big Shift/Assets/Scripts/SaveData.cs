@@ -11,6 +11,8 @@ public class SaveData : MonoBehaviour
 
     public Levels level;
 
+    public bool ResetData = false;
+
     public Level[] levels { get; private set; }
 
     Level l;
@@ -23,6 +25,15 @@ public class SaveData : MonoBehaviour
     {
         levels = new Level[6];
         index = (int)level;
+    }
+
+    private void Update()
+    {
+        if (ResetData)
+        {
+            ResetXml();
+            ResetData = false;
+        }
     }
 
     private void OnEnable()
@@ -90,6 +101,12 @@ public class SaveData : MonoBehaviour
 
             XmlElement unlock = xml.CreateElement("Unlock");
             unlock.InnerText = levels[0].unlock.ToString();
+
+            if (i == 0)
+            {
+                unlock.InnerText = "1";
+            }
+
             level.AppendChild(unlock);
         }
 

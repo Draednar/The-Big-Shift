@@ -18,6 +18,11 @@ public class OpenDoors : MonoBehaviour
             {
                 gates[i].SetActive(false);
             }
+
+            if (data.levels[i].unlock == 0)
+            {
+                gates[i].SetActive(true);
+            }
         }
     }
 
